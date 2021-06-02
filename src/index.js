@@ -10,4 +10,12 @@ export {
     event,
     template,
     animate
+};
+
+export default {
+    lang,
+    dom,
+    event,
+    template,
+    animate
 }
