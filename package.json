@@ -1,7 +1,8 @@
 {
-  "name": "doubledash",
+  "name": "@foragefox/doubledash",
   "version": "1.0.0",
-  "description": "Double Dash is simple utility library meant to help transition people off of jQuery.",
+  "description": "DoubleDash is simple utility library meant to help transition people off of jQuery.",
+  "repository": "doubledash-js/doubledash.git",
   "main": "src/index.js",
   "directories": {
     "test": "test"
