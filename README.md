@@ -4,11 +4,11 @@ Double Dash is simple utility library meant to help transition people off of jQu
 
 ## Installation
 
-`npm install doubledash`
+`npm install @foragefox/doubledash`
 
 ## Usage
 
-`import __ from 'doubledash';`
+`import __ from '@foragefox/doubledash';`
 
 ## Categories
 
