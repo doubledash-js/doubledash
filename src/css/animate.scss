@@ -1,0 +1,79 @@
+@import 'base';
+
+/* Attention  */
+@import 'attention/bounce';
+@import 'attention/flash';
+@import 'attention/heartBeat';
+@import 'attention/jello';
+@import 'attention/pulse';
+@import 'attention/rubberBand';
+@import 'attention/shake';
+@import 'attention/swing';
+@import 'attention/tada';
+@import 'attention/wobble';
+
+/* Bouncing  */
+@import 'bouncing/bounceIn';
+@import 'bouncing/bounceInDown';
+@import 'bouncing/bounceInLeft';
+@import 'bouncing/bounceInRight';
+@import 'bouncing/bounceInUp';
+@import 'bouncing/bounceOut';
+@import 'bouncing/bounceOutDown';
+@import 'bouncing/bounceOutLeft';
+@import 'bouncing/bounceOutRight';
+@import 'bouncing/bounceOutUp';
+
+/* Fading  */
+@import 'fading/fadeIn';
+@import 'fading/fadeInDown';
+@import 'fading/fadeInLeft';
+@import 'fading/fadeInRight';
+@import 'fading/fadeInUp';
+@import 'fading/fadeInTopLeft';
+@import 'fading/fadeInTopRight';
+@import 'fading/fadeInBottomLeft';
+@import 'fading/fadeInBottomRight';
+@import 'fading/fadeOut';
+@import 'fading/fadeOutDown';
+@import 'fading/fadeOutLeft';
+@import 'fading/fadeOutRight';
+@import 'fading/fadeOutUp';
+@import 'fading/fadeOutTopLeft';
+@import 'fading/fadeOutTopRight';
+@import 'fading/fadeOutBottomRight';
+@import 'fading/fadeOutBottomLeft';
+
+/* Rotating */
+@import 'rotating/rotateIn';
+@import 'rotating/rotateInDownLeft';
+@import 'rotating/rotateInDownRight';
+@import 'rotating/rotateInUpLeft';
+@import 'rotating/rotateInUpRight';
+@import 'rotating/rotateOut';
+@import 'rotating/rotateOutDownLeft';
+@import 'rotating/rotateOutDownRight';
+@import 'rotating/rotateOutUpLeft';
+@import 'rotating/rotateOutUpRight';
+
+/* Sliding */
+@import 'sliding/slideInDown';
+@import 'sliding/slideInLeft';
+@import 'sliding/slideInRight';
+@import 'sliding/slideInUp';
+@import 'sliding/slideOutDown';
+@import 'sliding/slideOutLeft';
+@import 'sliding/slideOutRight';
+@import 'sliding/slideOutUp';
+
+/* Zooming */
+@import 'zooming/zoomIn';
+@import 'zooming/zoomInDown';
+@import 'zooming/zoomInLeft';
+@import 'zooming/zoomInRight';
+@import 'zooming/zoomInUp';
+@import 'zooming/zoomOut';
+@import 'zooming/zoomOutDown';
+@import 'zooming/zoomOutLeft';
+@import 'zooming/zoomOutRight';
+@import 'zooming/zoomOutUp';

@@ -1,0 +1,12 @@
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 0s;
+    --animate-repeat: 1;
+}
+
+.animate {
+    animation-duration: var(--animate-duration);
+    animation-delay: var(--animate-delay);
+    animation-iteration-count: var(--animate-repeat);
+    animation-fill-mode: both;
+}
