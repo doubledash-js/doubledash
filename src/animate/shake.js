@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function shake(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'shake', options);
+    return animation(element, 'shake', options);
 }
     
 export default shake;

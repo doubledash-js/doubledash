@@ -20,19 +20,19 @@ let animations = {
 
 /**
  * 
- * The `animate()` function triggers a predefined animation on the specified `element`.
+ * The `animation()` function triggers a predefined animation on the specified `element`.
  * 
  * The animate.css file is requred for this function to work
  * 
  * ```js
- * __.animate.animate(element, animation, options);
+ * __.animate.animation(element, animation, options);
  * ```
  * 
  * @param {Element} element
  * @param {string} animation
  * @param {object} [options={ duration: 1s, delay: 0, repeat: 1 }] 
  */
-function animate(element, animation, options) {
+function animation(element, animation, options) {
 
     let isShowing = animations.show.includes(animation) || false;
     let attention = animations.attention.includes(animation);
@@ -88,4 +88,4 @@ function animate(element, animation, options) {
     });
 }
 
-export default animate;
+export default animation;

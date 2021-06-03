@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function flash(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'flash', options);
+    return animation(element, 'flash', options);
 }
     
 export default flash;

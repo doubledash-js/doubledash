@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function bounce(element, options) {
     options = options ? options : {};
     
-    return animate(element, 'bounce', options);
+    return animation(element, 'bounce', options);
 }
     
 export default bounce;

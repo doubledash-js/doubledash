@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function swing(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'swing', options);
+    return animation(element, 'swing', options);
 }
     
 export default swing;

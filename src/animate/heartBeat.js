@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function heartBeat(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'heartBeat', options);
+    return animation(element, 'heartBeat', options);
 }
     
 export default heartBeat;

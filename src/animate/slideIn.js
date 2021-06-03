@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -23,7 +23,7 @@ import animate from './animate';
     else
         animation = animation + 'Down'
 
-    return animate(element, animation, options);
+    return animation(element, animation, options);
 }
     
 export default slideIn;

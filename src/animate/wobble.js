@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function wobble(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'wobble', options);
+    return animation(element, 'wobble', options);
 }
     
 export default wobble;

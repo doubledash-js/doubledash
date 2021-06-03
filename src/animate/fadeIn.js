@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -21,7 +21,7 @@ import animate from './animate';
     if (options.direction)
         animation = animation + options.direction.charAt(0).toUpperCase() + options.direction.slice(1);
 
-    return animate(element, animation, options);
+    return animation(element, animation, options);
 }
     
 export default fadeIn;

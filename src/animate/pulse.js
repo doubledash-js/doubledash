@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function pulse(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'pulse', options);
+    return animation(element, 'pulse', options);
 }
     
 export default pulse;

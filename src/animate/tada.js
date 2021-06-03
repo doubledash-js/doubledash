@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function tada(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'tada', options);
+    return animation(element, 'tada', options);
 }
     
 export default tada;

@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 import bounce from './bounce';
 import bounceIn from './bounceIn';
 import bounceOut from './bounceOut';
@@ -21,7 +21,7 @@ import zoomingIn from './zoomingIn';
 import zoomingOut from './zoomingOut';
 
 export default {
-    animate,
+    animation,
     bounce,
     bounceIn,
     bounceOut,

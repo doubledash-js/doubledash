@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function rubberBand(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'rubberBand', options);
+    return animation(element, 'rubberBand', options);
 }
     
 export default rubberBand;

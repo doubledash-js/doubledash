@@ -1,5 +1,5 @@
 // animate
-export { default as animate } from './animate/animate';
+export { default as animation } from './animate/animation';
 export { default as bounce } from './animate/bounce';
 export { default as bounceIn } from './animate/bounceIn';
 export { default as bounceOut } from './animate/bounceOut';

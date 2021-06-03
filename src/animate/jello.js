@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 
 /**
  * 
@@ -17,7 +17,7 @@ import animate from './animate';
 function jello(element, options) {
     options = options ? options : {};
 
-    return animate(element, 'jello', options);
+    return animation(element, 'jello', options);
 }
     
 export default jello;
