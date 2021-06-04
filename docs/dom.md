@@ -105,7 +105,7 @@ __.dom.create(tag, attributes, text);
 
 #### Examples
 ```js
-__.dom.create('p', { 'id': 'my-paragraph', 'class' => 'first-class' }, 'New Paragraph');
+__.dom.create('p', { 'id': 'my-paragraph', 'class': 'first-class', 'data-name': '' }, 'New Paragraph');
 ```
 
 ```js
