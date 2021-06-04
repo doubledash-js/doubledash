@@ -1,3 +1,5 @@
+import isString from '../lang/isString';
+
 /**
  * 
  * The `before()` function inserts the specified `element` in front of (before) the specified `target`.
@@ -11,6 +13,9 @@
  * @returns {Element}
  */
 function before(element, target) {
+    if (isString(element))
+        return target.insertAdjacentHTML('beforebegin', element);
+
     return target.insertAdjacentElement('beforebegin', element);
 }
     

@@ -1,3 +1,5 @@
+import isString from '../lang/isString';
+
 /**
  * 
  * The `append()` function inserts the specified `element` at the end of the specified `target`.
@@ -11,6 +13,9 @@
  * @returns {Element}
  */
 function append(element, target) {
+    if (isString(element))
+        return target.insertAdjacentHTML('beforeend', element);
+
     return target.appendChild(element);
 }
     

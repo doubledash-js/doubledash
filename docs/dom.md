@@ -103,6 +103,15 @@ The `create()` function creates the HTML element specified by the `tag`. Optiona
 __.dom.create(tag, attributes, text);
 ```
 
+#### Examples
+```js
+__.dom.create('p', { 'id': 'my-paragraph', 'class' => 'first-class' }, 'New Paragraph');
+```
+
+```js
+__.dom.create('p', { 'id': 'my-paragraph', 'class' => [ 'first-class', 'second-class' ] }, 'New Paragraph');
+```
+
 #### Parameters
 
 *   `tag` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 

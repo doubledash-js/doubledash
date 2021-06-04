@@ -1,3 +1,5 @@
+import isString from '../lang/isString';
+
 /**
  * 
  * The `after()` function inserts the specified `element` after the specified `target`.
@@ -11,6 +13,9 @@
  * @returns {Element}
  */
 function after(element, target) {
+    if (isString(element))
+        return target.insertAdjacentHTML('afterend', element);
+
     return target.insertAdjacentElement('afterend', element);
 }
     

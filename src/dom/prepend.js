@@ -1,3 +1,4 @@
+import isString from '../lang/isString';
 
 /**
  * 
@@ -12,6 +13,9 @@
  * @returns {Element}
  */
 function prepend(element, target) {
+    if (isString(element))
+        return target.insertAdjacentHTML('afterbegin', element);
+
     return target.insertBefore(element, target.firstChild);
 }
     
