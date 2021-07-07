@@ -13,9 +13,11 @@ import isString from '../lang/isString';
  * @returns {Element}
  */
 function before(element, target) {
-    if (isString(element))
-        return target.insertAdjacentHTML('beforebegin', element);
-
+    if (isString(element)) {
+        target.insertAdjacentHTML('beforebegin', element);
+        return target.previousElementSibling;
+    }
+        
     return target.insertAdjacentElement('beforebegin', element);
 }
     

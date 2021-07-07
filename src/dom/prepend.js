@@ -13,8 +13,10 @@ import isString from '../lang/isString';
  * @returns {Element}
  */
 function prepend(element, target) {
-    if (isString(element))
-        return target.insertAdjacentHTML('afterbegin', element);
+    if (isString(element)) {
+        target.insertAdjacentHTML('afterbegin', element);
+        return target.firstChild;
+    }
 
     return target.insertBefore(element, target.firstChild);
 }

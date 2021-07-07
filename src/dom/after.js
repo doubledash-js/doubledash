@@ -13,8 +13,11 @@ import isString from '../lang/isString';
  * @returns {Element}
  */
 function after(element, target) {
-    if (isString(element))
-        return target.insertAdjacentHTML('afterend', element);
+    if (isString(element)) {
+        target.insertAdjacentHTML('afterend', element);
+        return target.nextElementSibling;
+    }
+        
 
     return target.insertAdjacentElement('afterend', element);
 }
