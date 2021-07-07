@@ -8,9 +8,8 @@ import escapeHtml from '../lang/escapeHtml';
  * @returns 
  */
 function compile(template, json) {
-    if (template && template.nodeType === Node.ELEMENT_NODE) {
-        template = template.innerHTML;
-    }
+    template = (template && template.nodeType === Node.ELEMENT_NODE) ? template.innerHTML : template;
+    json = json ? json : {};
 
     let re = /{{([^{{}}]*)}}/g,
         reExp = new RegExp('(^( )?(' + Object.keys(settings.tokens).join('|') + '))(.*)?', 'g'),

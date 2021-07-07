@@ -66,6 +66,7 @@ export { default as isUndefined } from './lang/isUndefined';
 
 // template
 export { default as compile } from './template/compile';
+export { default as supplant } from './template/supplant';
 
 // category
 export { default as lang } from './lang';
