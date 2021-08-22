@@ -68,12 +68,17 @@ export { default as isUndefined } from './lang/isUndefined';
 export { default as compile } from './template/compile';
 export { default as supplant } from './template/supplant';
 
+// form
+export { default as parseForm } from './form/parseForm';
+export { default as populateForm } from './form/populateForm';
+
 // category
 export { default as lang } from './lang';
 export { default as dom } from './dom';
 export { default as event } from './event';
 export { default as template } from './template';
 export { default as animate } from './animate';
+export { default as form } from './form';
 
 // all
 export { default } from './__.js';

@@ -6,3 +6,4 @@ Select a category:
 *  [Event](event.md)
 *  [Template](template.md)
 *  [Animate](animate.md)
+*  [Form](form.md)

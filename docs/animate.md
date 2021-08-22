@@ -1,4 +1,4 @@
-# Animations
+# Animation Functions
 
 :warning:  **The animate.css file is requred for all Animate functions to work**: Please find the animation file [here][4]!
 <br>

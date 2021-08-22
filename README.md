@@ -41,3 +41,7 @@ function = parents
 ## Documentation
 
 Find our docs [here](docs/)
+
+## Testing
+
+Before running `npm run test`, make sure you add the temporary option in the package.json: "type": "module"
