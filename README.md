@@ -19,6 +19,7 @@ We orginiaze our functions into categories:
 *   event
 *   template
 *   animate
+*   form
 
 ## Namespace structure
 
