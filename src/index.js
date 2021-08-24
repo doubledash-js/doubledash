@@ -27,6 +27,7 @@ export { default as append } from './dom/append';
 export { default as before } from './dom/before';
 export { default as children } from './dom/children';
 export { default as clone } from './dom/clone';
+export { default as closest } from './dom/closest';
 export { default as contains } from './dom/contains';
 export { default as create } from './dom/create';
 export { default as index } from './dom/elementIndex';
@@ -41,12 +42,17 @@ export { default as prev } from './dom/prev';
 export { default as remove } from './dom/remove';
 export { default as show } from './dom/show';
 export { default as siblings } from './dom/siblings';
+export { default as toggle } from './dom/toggle';
 
 //event
-export { default as once } from './event/once';
-export { default as on } from './event/on';
 export { default as off } from './event/off';
+export { default as on } from './event/on';
+export { default as once } from './event/once';
 export { default as trigger } from './event/trigger';
+
+// form
+export { default as parseForm } from './form/parseForm';
+export { default as populateForm } from './form/populateForm';
 
 // Lang
 export { default as escapeHtml } from './lang/escapeHtml';
@@ -64,21 +70,31 @@ export { default as isSet } from './lang/isSet';
 export { default as isString } from './lang/isString';
 export { default as isUndefined } from './lang/isUndefined';
 
+// location
+export { default as offset } from './location/offset';
+export { default as position } from './location/position';
+
+// size
+export { default as height } from './size/height';
+export { default as outerHeight } from './size/outerHeight';
+export { default as outerWidth } from './size/outerWidth';
+export { default as setHeight } from './size/setHeight';
+export { default as setWidth } from './size/setWidth';
+export { default as width } from './size/width';
+
 // template
 export { default as compile } from './template/compile';
 export { default as supplant } from './template/supplant';
 
-// form
-export { default as parseForm } from './form/parseForm';
-export { default as populateForm } from './form/populateForm';
-
 // category
-export { default as lang } from './lang';
+export { default as animate } from './animate';
 export { default as dom } from './dom';
 export { default as event } from './event';
-export { default as template } from './template';
-export { default as animate } from './animate';
 export { default as form } from './form';
+export { default as lang } from './lang';
+export { default as location } from './location';
+export { default as size } from './size';
+export { default as template } from './template';
 
 // all
 export { default } from './__.js';

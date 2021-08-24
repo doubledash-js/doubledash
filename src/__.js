@@ -1,15 +1,19 @@
-import lang from './lang';
+import animate from './animate';
 import dom from './dom';
 import event from './event';
-import template from './template';
-import animate from './animate';
 import form from './form';
+import lang from './lang';
+import location from './location';
+import size from './size';
+import template from './template';
 
 export default {
-    lang,
+    animate,
     dom,
     event,
-    template,
-    animate,
-    form
+    form,    
+    lang,
+    location,
+    size,
+    template
 }

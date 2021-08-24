@@ -1,13 +1,13 @@
 import settings from './settings';
-import once from './once';
-import on from './on';
 import off from './off';
+import on from './on';
+import once from './once';
 import trigger from './trigger';
 
 export default {
     settings,
-    once,
-    on,
     off,
+    on,
+    once,
     trigger
 }

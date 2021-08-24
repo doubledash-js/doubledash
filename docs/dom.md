@@ -84,6 +84,24 @@ Returns **[Element](https://developer.mozilla.org/docs/Web/API/Element)**
 <br>
 <br>
 
+## closest
+
+The `closest()` function returns the closest matching selector up the DOM tree.
+
+```js
+__.dom.closest(element, selector);
+```
+
+#### Parameters
+
+*   `element` **[Element](https://developer.mozilla.org/docs/Web/API/Element)** 
+*   `selector` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | [Element](https://developer.mozilla.org/docs/Web/API/Element))** 
+
+Returns **[Element](https://developer.mozilla.org/docs/Web/API/Element)** | **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+<br>
+<br>
+
+
 ## contains
 
 #### Parameters
@@ -293,3 +311,19 @@ __.dom.siblings(element);
 *   `element` **[Element](https://developer.mozilla.org/docs/Web/API/Element)** 
 
 Returns **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
+<br>
+<br>
+
+## toggle
+
+The `toggle()` function display or hide the element.
+
+```js
+__.dom.toggle(element, display);
+```
+
+#### Parameters
+
+*   `element` **[Element](https://developer.mozilla.org/docs/Web/API/Element)** 
+*   `selector` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  (optional, default '')
+

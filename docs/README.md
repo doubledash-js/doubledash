@@ -1,9 +1,12 @@
 # Documentation
 
 Select a category:
-*  [Lang](lang.md)
+*  [Animate](animate.md)
 *  [Dom](dom.md)
 *  [Event](event.md)
-*  [Template](template.md)
-*  [Animate](animate.md)
 *  [Form](form.md)
+*  [Lang](lang.md)
+*  [Location](location.md)
+*  [Size](size.md)
+*  [Template](template.md)
+

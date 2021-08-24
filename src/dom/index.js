@@ -3,6 +3,7 @@ import append from './append';
 import before from './before';
 import children from './children';
 import clone from './clone';
+import closest from './closest';
 import contains from './contains';
 import create from './create';
 import index from './elementIndex';
@@ -17,6 +18,7 @@ import prev from './prev';
 import remove from './remove';
 import show from './show';
 import siblings from './siblings';
+import toggle from './toggle';
 
 export default {
     after,
@@ -24,6 +26,7 @@ export default {
     before,
     children,
     clone,
+    closest,
     contains,
     create,
     index,
@@ -37,5 +40,6 @@ export default {
     prev,
     remove,
     show,
-    siblings
+    siblings,
+    toggle
 }
