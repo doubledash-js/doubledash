@@ -22,7 +22,7 @@ Returns **[Element](https://developer.mozilla.org/docs/Web/API/Element)**
 The `append()` function inserts the specified `element` at the end of the specified `target`.
 
 ```js
-__.dom.after(element, target);
+__.dom.append(element, target);
 ```
 
 #### Parameters
