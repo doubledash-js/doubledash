@@ -17,13 +17,13 @@ import animation from './animation';
  function slideOut(element, options) {
     options = options ? options : {};
 
-    let animation = 'slideOut';
+    let animationType = 'slideOut';
     if (options.direction)
-        animation = animation + options.direction.charAt(0).toUpperCase() + options.direction.slice(1);
+        animationType = animationType + options.direction.charAt(0).toUpperCase() + options.direction.slice(1);
     else
-        animation = animation + 'Down'
+        animationType = animationType + 'Down'
 
-    return animation(element, animation, options);
+    return animation(element, animationType, options);
 }
     
 export default slideOut;

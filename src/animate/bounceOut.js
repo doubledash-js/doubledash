@@ -17,11 +17,11 @@ import animation from './animation';
 function bounceOut(element, options) {
     options = options ? options : {};
 
-    let animation = 'bounceOut';
+    let animationType = 'bounceOut';
     if (options.direction)
-        animation = animation + options.direction.charAt(0).toUpperCase() + options.direction.slice(1);
+        animationType = animationType + options.direction.charAt(0).toUpperCase() + options.direction.slice(1);
 
-    return animation(element, animation, options);
+    return animation(element, animationType, options);
 }
     
 export default bounceOut;
