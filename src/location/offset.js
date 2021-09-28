@@ -12,8 +12,8 @@ function offset(element) {
     let rect = element.getBoundingClientRect();
 
     return {
-        top: rect.top + document.body.scrollTop,
-        left: rect.left + document.body.scrollLeft
+        top: rect.top + window.scrollY,
+        left: rect.left + window.scrollX
     };
 }
 
