@@ -84,12 +84,12 @@ Jimmy Kash
 
 ### HTML-escaping
 
-In DoubleDash template, the values returned by the {{expression}} are HTML-escaped. Say, if the expression contains `<`, then the returned HTML-escaped output is genarated as &lt;. If you don't want DoubleDash templates to escape a value, use the `&` token, {{&:
+In DoubleDash template, the values returned by the {{expression}} are HTML-escaped. Say, if the expression contains `<`, then the returned HTML-escaped output is genarated as `&lt;`. If you don't want DoubleDash templates to escape a value, use the `&` token, {{&:
 
 In the below template, you can learn how to produce the HTML escaped and raw output.
 
 ```html
-raw: {{{specialChars}}}
+raw: {{&specialChars}}
 html-escaped: {{specialChars}}
 Pass the special characters to the template
 ```
