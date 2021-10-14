@@ -15,7 +15,7 @@ import isString from '../lang/isString';
 function append(element, target) {
     if (isString(element)) {
         target.insertAdjacentHTML('beforeend', element);
-        return target.lastChild;
+        return target.lastElementChild;
     }
     
     return target.appendChild(element);
