@@ -14,7 +14,7 @@ import isString from '../lang/isString';
  */
 function prepend(element, target) {
     if (isString(element)) {
-        target.insertAdjacentHTML('afterbegin', element);
+        target.insertAdjacentHTML('afterbegin', element.trim());
         return target.firstElementChild;
     }
 

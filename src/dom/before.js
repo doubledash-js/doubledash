@@ -14,7 +14,7 @@ import isString from '../lang/isString';
  */
 function before(element, target) {
     if (isString(element)) {
-        target.insertAdjacentHTML('beforebegin', element);
+        target.insertAdjacentHTML('beforebegin', element.trim());
         return target.previousElementSibling;
     }
         

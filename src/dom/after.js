@@ -14,7 +14,7 @@ import isString from '../lang/isString';
  */
 function after(element, target) {
     if (isString(element)) {
-        target.insertAdjacentHTML('afterend', element);
+        target.insertAdjacentHTML('afterend', element.trim());
         return target.nextElementSibling;
     }
         
