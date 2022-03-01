@@ -16,7 +16,8 @@ function populateForm(form, data) {
         if (isSet(element)) {
             var type = element.getAttribute('type');
             if (type == 'radio') {
-                findOne('[name="' + key + '"][value="' + value + '"]', form).checked = true;
+                let radio = findOne('[name="' + key + '"][value="' + value + '"]', form);
+                if (isSet(radio)) radio.checked = true;
             } else if (type == 'checkbox' && (value == true || value == 'true')) {
                 element.checked = true;
             } else {
