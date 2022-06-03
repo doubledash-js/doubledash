@@ -1,4 +1,4 @@
-import animation from './animation';
+import animation from '../animate/animation';
 
 /**
  * 
