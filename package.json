@@ -5,6 +5,7 @@
   "repository": "doubledash-js/doubledash.git",
   "sideEffects": false,
   "main": "src/index.js",
+  "type": "module",
   "directories": {
     "test": "test"
   },
