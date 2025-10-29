@@ -201,3 +201,28 @@ will result in:
 ```
 
 You can also use `{{break}}` and `{{continue}}` in your for loops.
+
+
+### Add functions
+
+Use predefined functions in templates.
+```html
+<p>{{name}} - {{add(3, 4)}}</p>
+```
+
+Pass the below input object to the template
+```js
+{
+  name: 'Iggy',
+  add: (a, b) => {
+    return a + b;
+  }
+}
+```
+
+Output will be generated as below
+```html
+<p>Iggy - 7</p>
+```
+<br>
+<br>
