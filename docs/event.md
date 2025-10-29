@@ -18,7 +18,7 @@ __.event.on(element, eventName, handler);
 
 ## on
 
-Add an event listener to a element that is not in the dom yet.
+Add an event listener to a element that is not in the dom yet. The handler functions first parameter will have the property `delegateTarget`, which contains the delegated target.
 
 ```js
 __.event.on(element, eventName, selector, handler);
@@ -51,7 +51,8 @@ __.event.once(element, eventName, handler);
 
 ## once
 
-Run an event callback exactly once and then automatically remove it. Works the same as the `on()` method.
+Run an event callback exactly once and then automatically remove it on a element that is not in the dom yet. Works the same as the `on()` method. The handler functions first parameter will have the property `delegateTarget`, which contains the delegated target.
+
 
 ```js
 __.event.once(element, eventName, selector, handler);
