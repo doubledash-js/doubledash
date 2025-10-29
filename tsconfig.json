@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "allowJs": true,  // Allow JavaScript files
-    "outDir": "./dist" // Specify an output directory
-  },
-  "include": [
-    "src/**/*.js" // Include all JavaScript files in the source directory
-  ]
-}

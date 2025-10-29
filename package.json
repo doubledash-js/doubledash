@@ -13,14 +13,7 @@
     "css": "npm-run-all css-compile css-compress",
     "css-compile": "sass src/css/animate.scss dist/doubledash-animate.css",
     "css-compress": "sass dist/doubledash-animate.css dist/doubledash-animate.min.css --style compressed",
-    "js": "webpack",
-    "denoify": "denoify"
-  },
-  "denoify": {
-    "src": "src",
-    "build": "dist",
-    "entry": "src/index.js",
-    "index": "./src/index.js"
+    "js": "webpack"
   },
   "jest": {
     "verbose": true,
