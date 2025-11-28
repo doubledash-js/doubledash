@@ -1,4 +1,4 @@
-import animate from './animate';
+import animation from './animation';
 import dom from './dom';
 import event from './event';
 import form from './form';
@@ -8,7 +8,7 @@ import size from './size';
 import template from './template';
 
 export default {
-    animate,
+    animation,
     dom,
     event,
     form,    
