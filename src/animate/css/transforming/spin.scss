@@ -1,0 +1,16 @@
+.spin {
+  animation-name: spin-in;
+  animation-fill-mode: both;
+}
+
+@keyframes spin-in {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--animate-angle, -180deg)) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+

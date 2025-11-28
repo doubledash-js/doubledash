@@ -14,15 +14,172 @@ All animation functions return a Promise, the Promise is resolved when the anima
 });
 ```
 <br>
+
+## Core Animation Function
+
+The `animate()` function plays an animation immediately on the element and returns a Promise that resolves when the animation completes.
+
+```js
+__.animate.animate(element, 'fadeIn', { duration: '600ms' }).then(() => {
+    console.log('Animation complete');
+});
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** — the DOM element to animate
+*   `name` **[String][2]** — the animation name (e.g., 'fadeIn', 'bounce', 'spin')
+*   `options` **[object][3]** (optional) — configuration options
+
+#### Options
+
+- `duration` — animation duration (e.g., `'600ms'` or `600` for milliseconds)
+- `delay` — animation delay (e.g., `'100ms'`)
+- `repeat` — repeat count (default: `1`)
+- `distance` — distance for slide/glide animations (e.g., `'30px'`)
+- `scale` — scale factor for grow/shrink (e.g., `1.2`)
+- `angle` — rotation angle in degrees (e.g., `45` or `'45deg'`)
+- `intensity` — intensity for blur/wiggle (e.g., `'15px'` or `4`)
+- `easing` — timing function (e.g., `'ease-out'`, `'cubic-bezier(...)'`)
+- `direction` — directional suffix for animations with variants (e.g., `'up'`, `'left'`, `'down'`)
+- `hideOnEnd` — force hide the element after animation (boolean, default: `false`)
+
+<br>
+
+## Event-Driven Animation Functions
+
+The animation system provides separate functions for event-driven triggers. Developers handle the event logic explicitly.
+
+### onClick
+
+Play an animation when the element is clicked.
+
+```js
+__.animate.onClick(element, 'bounce', { duration: '600ms' });
+```
+
+### onHover
+
+Play an animation when the element is hovered.
+
+```js
+__.animate.onHover(element, 'pulse', { duration: '800ms' });
+```
+
+### onEntrance
+
+Play an animation when the element enters the viewport (IntersectionObserver).
+
+```js
+__.animate.onEntrance(element, 'fadeIn', { duration: '600ms', threshold: 0.2, once: true });
+```
+
+**Options:**
+- `threshold` — IntersectionObserver threshold (default: `0.2`)
+- `once` — play animation only once (default: `true`)
+
+### onLoop
+
+Play an animation in an infinite loop.
+
+```js
+__.animate.onLoop(element, 'breath', { duration: '2000ms' });
+```
+
+CSS variable names used by the library (preferred convention):
+
+- `--animate-duration` — animation duration (e.g., `600ms`)
+- `--animate-delay` — animation delay
+- `--animate-repeat` — repeat count
+- `--animate-distance` — distance used by slide/glide
+- `--animate-scale` — scale used by expand/grow
+- `--animate-angle` — angle used by flip/rotate
+- `--animate-intensity` — intensity used by blur
+- `--animate-easing` — easing/timing function
+
+<br>
+<br>
+
+## Animation Categories
+
+The animation library includes four main categories of animations:
+
+### Scaling Animations
+Scale-based entrance and transition animations:
+- **expand** — scales from 0.8 to 1
+- **grow** — scales from 0 to 1  
+- **shrink** — scales from 1.2 to 1
+
+### Morphing Animations
+Filter and transform-based animations:
+- **blur** — blurs in with opacity fade
+- **reveal** — reveals with horizontal scale (scaleX)
+
+### Transforming Animations
+3D rotation and spin effects:
+- **flip** — flips on X-axis (default)
+- **flipX** — flips on X-axis
+- **flipY** — flips on Y-axis
+- **spin** — spins with rotation and scale
+
+### Attention Animations
+Quick animations for drawing attention:
+- **bounce** — bounces up and down
+- **flash** — flashes in and out
+- **heartBeat** — pulses like a heartbeat
+- **jello** — jiggly jello effect
+- **pulse** — gentle pulsing effect
+- **rubberBand** — stretches like rubber
+- **shake** — side-to-side shaking
+- **swing** — swings back and forth
+- **tada** — magical tada effect
+- **wobble** — wobbly effect
+- **breath** — breathing effect (scale pulse, 2s default)
+- **wiggle** — gentle rotation wiggle (600ms default)
+- **poke** — vertical scale pulse (800ms default)
+
+All animations support parametric customization and can be triggered via `animate()`, `onClick()`, `onHover()`, `onEntrance()`, or `onLoop()`:
+
+```js
+// Immediate play
+__.animate.animate(element, 'expand', { duration: '600ms' });
+
+// With event triggers
+__.animate.onEntrance(element, 'blur', { duration: '600ms' });
+__.animate.onHover(element, 'spin', { duration: '600ms' });
+__.animate.onClick(element, 'grow', { duration: '600ms' });
+__.animate.onLoop(element, 'breath', { duration: '2000ms' });
+```
+
+<br>
 <br>
 
 # Animate Functions
 
+<br>
+
+## blur
+
+Blurs in the element. Shows hidden elements as a result with a blur-in effect.
+
+```js
+__.animate.blur(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', intensity: '10px' }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
 ## bounce
 
-The `bounce()` function bounces the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a bouncing attention animation on the element.
 
 ```js
 __.animate.bounce(element, options);
@@ -31,17 +188,17 @@ __.animate.bounce(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## bounceIn
 
-The `bounceIn()` function bounces in the specified `element`. This function shows hidden elements as a result.
-
-The animate.css file is requred for this function to work
+Bounces in the element. Shows hidden elements as a result.
 
 ```js
 __.animate.bounceIn(element, options);
@@ -50,17 +207,17 @@ __.animate.bounceIn(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: down|left|right|up, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
 <br>
 <br>
 
 ## bounceOut
 
-The `bounceOut()` function bounces out the specified `element`. This function hides visible elements as a result.
-
-The animate.css file is requred for this function to work
+Bounces out the element. Hides visible elements as a result.
 
 ```js
 __.animate.bounceOut(element, options);
@@ -69,17 +226,55 @@ __.animate.bounceOut(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: down|left|right|up, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
+<br>
+<br>
+
+## breath
+
+Creates a breathing animation on the element.
+
+```js
+__.animate.breath(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '2000ms', scale: 1.05 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## expand
+
+Expands the element from a small scale. Shows hidden elements as a result.
+
+```js
+__.animate.expand(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', scale: 0.8 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## fadeIn
 
-The `fadeIn()` function fades in the specified `element`. This function shows hidden elements as a result.
-
-The animate.css file is requred for this function to work
+Fades in the element. Shows hidden elements as a result.
 
 ```js
 __.animate.fadeIn(element, options);
@@ -88,17 +283,17 @@ __.animate.fadeIn(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: down|left|right|up|bottomLeft|bottomRight|topLeft|topLeft, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`, `'topLeft'`, `'topRight'`, `'bottomLeft'`, `'bottomRight'`
 <br>
 <br>
 
 ## fadeOut
 
-The `fadeOut()` function fades out the specified `element`. This function hides visible elements as a result.
-
-The animate.css file is requred for this function to work
+Fades out the element. Hides visible elements as a result.
 
 ```js
 __.animate.fadeOut(element, options);
@@ -107,17 +302,17 @@ __.animate.fadeOut(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: down|left|right|up|bottomLeft|bottomRight|topLeft|topLeft, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`, `'topLeft'`, `'topRight'`, `'bottomLeft'`, `'bottomRight'`
 <br>
 <br>
 
 ## flash
 
-The `flash()` function flashes the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a flashing attention animation on the element.
 
 ```js
 __.animate.flash(element, options);
@@ -126,17 +321,55 @@ __.animate.flash(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## flip
+
+Flips the element along the X-axis (or Y-axis with `direction: 'y'`). Shows hidden elements as a result.
+
+```js
+__.animate.flip(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', angle: 90, direction: null }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'x'`, `'y'`
+<br>
+<br>
+
+## grow
+
+Grows the element from zero scale. Shows hidden elements as a result.
+
+```js
+__.animate.grow(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', scale: 0 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## heartBeat
 
-The `heartBeat()` function pulses like a heartBeat the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a heart-beat pulsing animation on the element.
 
 ```js
 __.animate.heartBeat(element, options);
@@ -145,17 +378,17 @@ __.animate.heartBeat(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## jello
 
-The `jello()` function give a jello like effect of the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a jello-like effect on the element.
 
 ```js
 __.animate.jello(element, options);
@@ -164,17 +397,36 @@ __.animate.jello(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## poke
+
+Creates a poking animation on the element.
+
+```js
+__.animate.poke(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '800ms', scale: 1.05 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## pulse
 
-The `pulse()` function pulses the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a pulsing attention animation on the element.
 
 ```js
 __.animate.pulse(element, options);
@@ -183,17 +435,36 @@ __.animate.pulse(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## reveal
+
+Reveals the element with a horizontal scale effect. Shows hidden elements as a result.
+
+```js
+__.animate.reveal(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## rotateIn
 
-The `rotateIn()` function rotates in the specified `element`. This function shows hidden elements as a result.
-
-The animate.css file is requred for this function to work
+Rotates in the element. Shows hidden elements as a result.
 
 ```js
 __.animate.rotateIn(element, options);
@@ -202,17 +473,17 @@ __.animate.rotateIn(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: downLeft|downRight|upLeft|upLeft, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'downLeft'`, `'downRight'`, `'upLeft'`, `'upRight'`
 <br>
 <br>
 
 ## rotateOut
 
-The `rotateOut()` function rotates out the specified `element`. This function hides visible elements as a result.
-
-The animate.css file is requred for this function to work
+Rotates out the element. Hides visible elements as a result.
 
 ```js
 __.animate.rotateOut(element, options);
@@ -221,17 +492,17 @@ __.animate.rotateOut(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: downLeft|downRight|upLeft|upLeft, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'downLeft'`, `'downRight'`, `'upLeft'`, `'upRight'`
 <br>
 <br>
 
 ## rubberBand
 
-The `rubberBand()` function give a rubberBand like effect of the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a rubber-band effect on the element.
 
 ```js
 __.animate.rubberBand(element, options);
@@ -240,17 +511,17 @@ __.animate.rubberBand(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## shake
 
-The `shake()` function shakes the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a shaking attention animation on the element.
 
 ```js
 __.animate.shake(element, options);
@@ -259,17 +530,36 @@ __.animate.shake(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## shrink
+
+Shrinks the element from a large scale. Shows hidden elements as a result.
+
+```js
+__.animate.shrink(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', scale: 1.2 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## slideIn
 
-The `slideIn()` function slides in the specified `element`. This function shows hidden elements as a result.
-
-The animate.css file is requred for this function to work
+Slides in the element. Shows hidden elements as a result.
 
 ```js
 __.animate.slideIn(element, options);
@@ -278,17 +568,17 @@ __.animate.slideIn(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: up|down|left|right, duration: 1s, delay: 0, repeat: 1 } `)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
 <br>
 <br>
 
 ## slideOut
 
-The `slideOut()` function slides out the specified `element`. This function hides visible elements as a result.
-
-The animate.css file is requred for this function to work
+Slides out the element. Hides visible elements as a result.
 
 ```js
 __.animate.slideOut(element, options);
@@ -297,17 +587,36 @@ __.animate.slideOut(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: up|down|left|right, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
+<br>
+<br>
+
+## spin
+
+Spins the element with a rotation and scale effect. Shows hidden elements as a result.
+
+```js
+__.animate.spin(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', angle: -180 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## swing
 
-The `swings()` function swings the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a swinging attention animation on the element.
 
 ```js
 __.animate.swing(element, options);
@@ -316,17 +625,17 @@ __.animate.swing(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## tada
 
-The `tada()` function gives a magic like effect of the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a magical tada effect on the element.
 
 ```js
 __.animate.tada(element, options);
@@ -335,17 +644,36 @@ __.animate.tada(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
+<br>
+<br>
+
+## wiggle
+
+Creates a wiggling animation on the element. 
+
+```js
+__.animate.wiggle(element, options);
+```
+
+#### Parameters
+
+*   `element` **[Element][1]** 
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', angle: 2 }`)
+
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## wobble
 
-The `wobble()` function wobbles the specified `element` for attention.
-
-The animate.css file is requred for this function to work
+Plays a wobbling attention animation on the element.
 
 ```js
 __.animate.wobble(element, options);
@@ -354,17 +682,17 @@ __.animate.wobble(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** not applicable
 <br>
 <br>
 
 ## zoomingIn
 
-The `zoomingIn()` function zooms in the specified `element`. This function shows hidden elements as a result.
-
-The animate.css file is requred for this function to work
+Zooms in the element. Shows hidden elements as a result.
 
 ```js
 __.animate.zoomingIn(element, options);
@@ -373,17 +701,17 @@ __.animate.zoomingIn(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: up|down|left|right, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
 <br>
 <br>
 
 ## zoomingOut
 
-The `zoomingOut()` function zooms out the specified `element`. This function hides visible elements as a result.
-
-The animate.css file is requred for this function to work
+Zooms out the element. Hides visible elements as a result.
 
 ```js
 __.animate.zoomingOut(element, options);
@@ -392,11 +720,11 @@ __.animate.zoomingOut(element, options);
 #### Parameters
 
 *   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ direction: up|down|left|right, duration: 1s, delay: 0, repeat: 1 }`)
+*   `options` **[object][3]** (optional, default `{ duration: '600ms', direction: null }`)
 
-Returns **[Promise][5]**
-<br>
-<br>
+Returns **[Promise][5]** — resolves when animation ends
+
+**Direction options:** `'up'`, `'down'`, `'left'`, `'right'`
 
 [1]: https://developer.mozilla.org/docs/Web/API/Element
 

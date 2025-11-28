@@ -1,0 +1,13 @@
+.breath {
+  --animate-duration: 2s;
+
+  animation-name: breath;
+  animation-timing-function: var(--animate-easing, ease-in-out);
+}
+
+@keyframes breath {
+  0% { transform: scale(1); }
+  50% { transform: scale(var(--animate-scale, 1.05)); }
+  100% { transform: scale(1); }
+}
+

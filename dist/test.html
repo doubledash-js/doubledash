@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DoubleDash Animate Test</title>
+  <link rel="stylesheet" href="./doubledash-animate.css">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:24px}
+    .box{width:220px;height:80px;background:#2b90d9;color:#fff;display:flex;align-items:center;justify-content:center;margin:20px;border-radius:6px}
+    .spacer{height:900px}
+    h1{margin-bottom:6px}
+    h2{margin-top:40px;margin-bottom:10px;border-bottom:2px solid #2b90d9;padding-bottom:8px}
+    .demo-section{margin-bottom:30px}
+    .demo-label{font-size:12px;color:#666;margin-top:12px;margin-bottom:4px}
+    .parametric-example{background:#f5f5f5;padding:16px;border-radius:6px;margin-bottom:20px}
+    .box.custom-distance{--animate-distance:50px}
+    .box.custom-scale-grow{--animate-scale:1.5}
+    .box.custom-scale-shrink{--animate-scale:1.4}
+    .box.custom-angle-flip{--animate-angle:45deg}
+    .box.custom-angle-spin{--animate-angle:-360deg}
+    .box.custom-easing{--animate-easing:cubic-bezier(0.68, -0.55, 0.265, 1.55)}
+    .box.custom-intensity-breath{--animate-scale:1.2}
+    .box.custom-intensity-wiggle{--animate-angle:4deg}
+  </style>
+</head>
+<body>
+
+  <h1>DoubleDash Animate — All Animations Test</h1>
+  <p>Click a button to trigger the corresponding animation on its box.</p>
+  <div class="demo-section" id="allAnimations"></div>
+
+  <script src="./doubledash.js"></script>
+  <script>
+    // List of all animations from the JS module
+    const animations = [
+      'bounceIn', 'bounceInUp', 'bounceInDown', 'bounceInLeft', 'bounceInRight',
+      'fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight',
+      'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',
+      'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight',
+      'zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight',
+      'bounce', 'flash', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble',
+      'expand', 'grow', 'shrink', 'blur', 'reveal', 'flip', 'flipX', 'flipY', 'spin', 'breath', 'poke', 'wiggle',
+      'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight',
+      'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight',
+      'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpLeft',
+      'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
+      'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('allAnimations');
+      animations.forEach(anim => {
+        // Create box and button
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'center';
+        wrapper.style.marginBottom = '12px';
+
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.textContent = anim;
+        box.id = 'box_' + anim;
+        box.style.marginRight = '16px';
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Animate';
+        btn.style.padding = '6px 16px';
+        btn.style.fontSize = '14px';
+        btn.style.cursor = 'pointer';
+        btn.onclick = function() {
+          // Remove animation class if present
+          box.classList.remove('animate', anim);
+          void box.offsetWidth; // force reflow
+          // Call animation function
+          if (window.__ && __.animate && __.animate.animate) {
+            __.animate.animate(box, anim, { duration: '800ms' });
+          } else {
+            // fallback: just add class
+            box.classList.add('animate', anim);
+            setTimeout(() => box.classList.remove('animate', anim), 1000);
+          }
+        };
+
+        wrapper.appendChild(box);
+        wrapper.appendChild(btn);
+        container.appendChild(wrapper);
+      });
+    });
+  </script>
+</body>
+</html>

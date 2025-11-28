@@ -1,0 +1,17 @@
+.expand {
+    animation-name: expand;
+    transform-origin: center;
+    animation-timing-function: var(--animate-easing, ease-out);
+}
+
+@keyframes expand {
+  0% {
+    opacity: 0;
+    transform: scale(var(--animate-scale, 0.8));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
