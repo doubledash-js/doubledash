@@ -3,6 +3,7 @@
 /* Attention  */
 @import 'attention/bounce';
 @import 'attention/flash';
+@import 'attention/flip';
 @import 'attention/headShake';
 @import 'attention/heartBeat';
 @import 'attention/jello';
@@ -52,7 +53,6 @@
 @import 'fading/fadeOutBottomLeft';
 
 /* Flippers */
-@import 'flippers/flip';
 @import 'flippers/flipInX';
 @import 'flippers/flipInY';
 @import 'flippers/flipOutX';

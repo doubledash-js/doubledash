@@ -50,6 +50,33 @@
     opacity: 0;
   }
 }
+@keyframes flip {
+  from {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
+  }
+  to {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
+  }
+}
+.flip {
+  backface-visibility: visible;
+  animation-name: flip;
+}
+
 .headShake {
   animation-name: headShake;
   animation-timing-function: var(--animate-easing, ease-in-out);
@@ -780,33 +807,6 @@
 }
 
 /* Flippers */
-@keyframes flip {
-  from {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
-    animation-timing-function: ease-out;
-  }
-  40% {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
-    animation-timing-function: ease-out;
-  }
-  50% {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
-    animation-timing-function: ease-in;
-  }
-  80% {
-    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
-    animation-timing-function: ease-in;
-  }
-  to {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
-    animation-timing-function: ease-in;
-  }
-}
-.animated.flip {
-  backface-visibility: visible;
-  animation-name: flip;
-}
-
 @keyframes flipInX {
   from {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -898,7 +898,7 @@
 }
 
 /* lightspeed */
-@keyframes lightSpeedInRight {
+@keyframes lightspeedInRight {
   from {
     transform: translate3d(100%, 0, 0) skewX(-30deg);
     opacity: 0;
@@ -914,12 +914,12 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.lightSpeedInRight {
-  animation-name: lightSpeedInRight;
-  animation-timing-function: ease-out;
+.lightspeedInRight {
+  animation-name: lightspeedInRight;
+  animation-timing-function: var(--animate-easing, ease-out);
 }
 
-@keyframes lightSpeedInLeft {
+@keyframes lightspeedInLeft {
   from {
     transform: translate3d(-100%, 0, 0) skewX(30deg);
     opacity: 0;
@@ -935,12 +935,12 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.lightSpeedInLeft {
-  animation-name: lightSpeedInLeft;
-  animation-timing-function: ease-out;
+.lightspeedInLeft {
+  animation-name: lightspeedInLeft;
+  animation-timing-function: var(--animate-easing, ease-out);
 }
 
-@keyframes lightSpeedOutRight {
+@keyframes lightspeedOutRight {
   from {
     opacity: 1;
   }
@@ -949,12 +949,12 @@
     opacity: 0;
   }
 }
-.lightSpeedOutRight {
-  animation-name: lightSpeedOutRight;
-  animation-timing-function: ease-in;
+.lightspeedOutRight {
+  animation-name: lightspeedOutRight;
+  animation-timing-function: var(--animate-easing, ease-in);
 }
 
-@keyframes lightSpeedOutLeft {
+@keyframes lightspeedOutLeft {
   from {
     opacity: 1;
   }
@@ -963,9 +963,9 @@
     opacity: 0;
   }
 }
-.lightSpeedOutLeft {
-  animation-name: lightSpeedOutLeft;
-  animation-timing-function: ease-in;
+.lightspeedOutLeft {
+  animation-name: lightspeedOutLeft;
+  animation-timing-function: var(--animate-easing, ease-in);
 }
 
 /* Rotating */

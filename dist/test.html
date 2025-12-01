@@ -32,17 +32,22 @@
 
   <script src="./doubledash.js"></script>
   <script>
-    // List of all animations from the JS module
+    // List of all animations from the JS module (updated)
     const animations = [
+      'blurIn',
       'bounceIn', 'bounceInUp', 'bounceInDown', 'bounceInLeft', 'bounceInRight',
       'fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight',
+      'flipInX', 'flipInY',
+      'lightspeedInRight', 'lightspeedInLeft',
       'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',
       'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight',
       'zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight',
-      'bounce', 'flash', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble',
-      'expand', 'grow', 'shrink', 'blur', 'reveal', 'flip', 'flipX', 'flipY', 'spin', 'breath', 'poke', 'wiggle',
+      'bounce', 'flash', 'flip', 'headShake', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'spin', 'swing', 'tada', 'wobble',
+      'blurOut',
       'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight',
       'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight',
+      'flipOutX', 'flipOutY',
+      'lightspeedOutRight', 'lightspeedOutLeft',
       'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight',
       'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
       'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'
@@ -68,7 +73,7 @@
       container.appendChild(controls);
 
       animations.forEach(anim => {
-        // Create box and buttons
+        // Create box and button
         const wrapper = document.createElement('div');
         wrapper.style.display = 'flex';
         wrapper.style.alignItems = 'center';
@@ -86,20 +91,6 @@
         btn.style.fontSize = '14px';
         btn.style.cursor = 'pointer';
 
-        const stopBtn = document.createElement('button');
-        stopBtn.textContent = 'Stop';
-        stopBtn.style.marginLeft = '8px';
-        stopBtn.style.padding = '6px 12px';
-        stopBtn.disabled = true;
-
-        const finishBtn = document.createElement('button');
-        finishBtn.textContent = 'Finish';
-        finishBtn.style.marginLeft = '8px';
-        finishBtn.style.padding = '6px 12px';
-        finishBtn.disabled = true;
-
-        let currentHandle = null;
-
         btn.onclick = function() {
           // Remove animation class if present
           box.classList.remove('animate', anim);
@@ -108,20 +99,7 @@
           const opts = { duration: '800ms', force: chk.checked };
 
           if (window.__ && __.animate && __.animate.animate) {
-            const h = __.animate.animate(box, anim, opts);
-            // ensure thenable handle shape
-            currentHandle = h;
-            stopBtn.disabled = false;
-            finishBtn.disabled = false;
-
-            // when finished, disable control buttons
-            if (h && h.then) h.then(() => {
-              stopBtn.disabled = true;
-              finishBtn.disabled = true;
-            }).catch(() => {
-              stopBtn.disabled = true;
-              finishBtn.disabled = true;
-            });
+            __.animate.animate(box, anim, opts);
           } else {
             // fallback: just add class
             box.classList.add('animate', anim);
@@ -129,26 +107,8 @@
           }
         };
 
-        stopBtn.onclick = function() {
-          if (currentHandle && typeof currentHandle.stop === 'function') {
-            currentHandle.stop();
-          }
-          stopBtn.disabled = true;
-          finishBtn.disabled = true;
-        };
-
-        finishBtn.onclick = function() {
-          if (currentHandle && typeof currentHandle.finish === 'function') {
-            currentHandle.finish();
-          }
-          stopBtn.disabled = true;
-          finishBtn.disabled = true;
-        };
-
         wrapper.appendChild(box);
         wrapper.appendChild(btn);
-        wrapper.appendChild(stopBtn);
-        wrapper.appendChild(finishBtn);
         container.appendChild(wrapper);
       });
     });
