@@ -43,15 +43,32 @@
       'expand', 'grow', 'shrink', 'blur', 'reveal', 'flip', 'flipX', 'flipY', 'spin', 'breath', 'poke', 'wiggle',
       'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight',
       'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight',
-      'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpLeft',
+      'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight',
       'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
       'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'
     ];
 
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('allAnimations');
+
+      // control: force animations (ignore prefers-reduced-motion)
+      const controls = document.createElement('div');
+      controls.style.marginBottom = '12px';
+      controls.style.display = 'flex';
+      controls.style.alignItems = 'center';
+      const chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.id = 'forceAnim';
+      const lbl = document.createElement('label');
+      lbl.htmlFor = 'forceAnim';
+      lbl.style.marginLeft = '8px';
+      lbl.textContent = 'Force animations (ignore prefers-reduced-motion)';
+      controls.appendChild(chk);
+      controls.appendChild(lbl);
+      container.appendChild(controls);
+
       animations.forEach(anim => {
-        // Create box and button
+        // Create box and buttons
         const wrapper = document.createElement('div');
         wrapper.style.display = 'flex';
         wrapper.style.alignItems = 'center';
@@ -61,20 +78,50 @@
         box.className = 'box';
         box.textContent = anim;
         box.id = 'box_' + anim;
-        box.style.marginRight = '16px';
+        box.style.marginRight = '12px';
 
         const btn = document.createElement('button');
         btn.textContent = 'Animate';
-        btn.style.padding = '6px 16px';
+        btn.style.padding = '6px 12px';
         btn.style.fontSize = '14px';
         btn.style.cursor = 'pointer';
+
+        const stopBtn = document.createElement('button');
+        stopBtn.textContent = 'Stop';
+        stopBtn.style.marginLeft = '8px';
+        stopBtn.style.padding = '6px 12px';
+        stopBtn.disabled = true;
+
+        const finishBtn = document.createElement('button');
+        finishBtn.textContent = 'Finish';
+        finishBtn.style.marginLeft = '8px';
+        finishBtn.style.padding = '6px 12px';
+        finishBtn.disabled = true;
+
+        let currentHandle = null;
+
         btn.onclick = function() {
           // Remove animation class if present
           box.classList.remove('animate', anim);
           void box.offsetWidth; // force reflow
-          // Call animation function
+
+          const opts = { duration: '800ms', force: chk.checked };
+
           if (window.__ && __.animate && __.animate.animate) {
-            __.animate.animate(box, anim, { duration: '800ms' });
+            const h = __.animate.animate(box, anim, opts);
+            // ensure thenable handle shape
+            currentHandle = h;
+            stopBtn.disabled = false;
+            finishBtn.disabled = false;
+
+            // when finished, disable control buttons
+            if (h && h.then) h.then(() => {
+              stopBtn.disabled = true;
+              finishBtn.disabled = true;
+            }).catch(() => {
+              stopBtn.disabled = true;
+              finishBtn.disabled = true;
+            });
           } else {
             // fallback: just add class
             box.classList.add('animate', anim);
@@ -82,8 +129,26 @@
           }
         };
 
+        stopBtn.onclick = function() {
+          if (currentHandle && typeof currentHandle.stop === 'function') {
+            currentHandle.stop();
+          }
+          stopBtn.disabled = true;
+          finishBtn.disabled = true;
+        };
+
+        finishBtn.onclick = function() {
+          if (currentHandle && typeof currentHandle.finish === 'function') {
+            currentHandle.finish();
+          }
+          stopBtn.disabled = true;
+          finishBtn.disabled = true;
+        };
+
         wrapper.appendChild(box);
         wrapper.appendChild(btn);
+        wrapper.appendChild(stopBtn);
+        wrapper.appendChild(finishBtn);
         container.appendChild(wrapper);
       });
     });

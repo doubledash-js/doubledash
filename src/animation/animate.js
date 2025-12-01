@@ -12,7 +12,7 @@ let animations = {
     hide: [
         'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight',
         'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight', 
-        'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpLeft',
+        'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight',
         'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
         'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'
     ],
@@ -41,31 +41,59 @@ function animate(element, animation, options = {}) {
     const isShow = animations.show.includes(animation);
     const isHide = animations.hide.includes(animation);
     const isLoopable = animations.loopable.includes(animation);
+
+    // validate animation exists in registry early
+    if (!isShow && !isHide && !isLoopable) {
+        console.error(`Animation ${animation} not found`);
+        return Promise.reject(`Animation ${animation} not found`);
+    }
+
+    // Accessibility: respect prefers-reduced-motion unless forced
+    const prefersReduce = typeof window !== 'undefined' 
+        && window.matchMedia 
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    return new Promise((resolve) => {
-      
-        // validate animation exists in registry
-        if (!isShow && !isHide && !isLoopable) {
-            console.error(`Animation ${animation} not found`);
-            return Promise.reject(`Animation ${animation} not found`);
+    if (prefersReduce && !options.force) {
+        // short-circuit: apply logical end state and return immediately
+        if (isHide) element.style.display = 'none';
+        if (isShow) element.style.display = '';
+
+        const resolved = Promise.resolve('reduced-motion-skip');
+        resolved.stop = () => {};
+        resolved.finish = () => {};
+        return resolved;
+    }
+
+    let finished = false;
+    let resolvePromise;
+
+    // prepare classes to add to element
+    const classes = ['animate', animation];
+
+    // shared cleanup helper
+    function cleanup(shouldHide, resolveValue) {
+        
+        if (finished) return;
+        finished = true;
+
+        if (shouldHide) {
+            element.style.display = 'none';
         }
-   
-        // prepare classes to add to element
-        const classes = ['animate', animation];
 
+        element.classList.remove(...classes);
+        element.removeEventListener('animationend', handleAnimationEnd);
 
-        function handleAnimationEnd(event) {
-            event.stopPropagation();
+        resolvePromise(resolveValue);
+    }
 
-            // Only hide for 'hide' group or if explicitly requested
-            if (isHide || options.hideOnEnd) {
-                element.style.display = 'none';
-            }
+    // event handler (not registered with {once:true} so we can remove when stopping)
+    function handleAnimationEnd(event) {
+        event && event.stopPropagation();
+        cleanup(isHide, 'Animation ended');
+    }
 
-            element.classList.remove(...classes);
-
-            resolve('Animation ended');
-        }
+    const promise = new Promise((resolve) => {
+        resolvePromise = resolve;
 
         // set css variables
         if (options.duration)  element.style.setProperty('--animate-duration', options.duration);
@@ -77,17 +105,23 @@ function animate(element, animation, options = {}) {
         if (options.intensity) element.style.setProperty('--animate-intensity', options.intensity);
         if (options.easing)    element.style.setProperty('--animate-easing', options.easing);
 
-        element.addEventListener('animationend', handleAnimationEnd, { once: true });
+        // wire up listener and play
+        element.addEventListener('animationend', handleAnimationEnd);
 
         element.classList.add(...classes);
 
-        if (window.getComputedStyle(element).display === 'none') 
+        if (window.getComputedStyle(element).display === 'none')
             element.style.display = '';
 
-        if (isShow) 
+        if (isShow)
             element.style.display = '';
     });
 
+    // control methods
+    promise.stop = () => cleanup(false, 'stopped');
+    promise.finish = () => cleanup(isHide, 'finished');
+
+    return promise;
 }
 
 function directionSufix(direction) {
@@ -103,6 +137,53 @@ export default animate;
 
 
 /*
+
+
+ // event handler (not registered with {once:true} so we can remove when stopping)
+    function handleAnimationEnd(event) {
+        event && event.stopPropagation();
+
+        if (finished) return;
+        finished = true;
+
+        // Only hide for 'hide' group or if explicitly requested
+        if (isHide || options.hideOnEnd) {
+            element.style.display = 'none';
+        }
+
+        element.classList.remove(...classes);
+
+        if (typeof options.onEnd === 'function') {
+            try { options.onEnd(); } catch (e) { console.error(e); }
+        }
+
+        // resolve the promise
+        resolvePromise('Animation ended');
+    }
+
+
+ // Accessibility: respect prefers-reduced-motion unless forced
+    const prefersReduce = typeof window !== 'undefined' 
+        && window.matchMedia 
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReduce && !options.force) {
+        // short-circuit: apply logical end state and return a thenable handle
+        if (isHide || options.hideOnEnd) element.style.display = 'none';
+        if (isShow) element.style.display = '';
+
+        const resolved = Promise.resolve('reduced-motion-skip');
+        const handle = {
+            promise: resolved,
+            stop() {},
+            finish() {},
+            then: resolved.then.bind(resolved),
+            catch: resolved.catch ? resolved.catch.bind(resolved) : () => {}
+        };
+        return handle;
+    }
+
+
 function animation(element, animationName, options = {}) {
 
     // merge defaults then normalize into `opts`
