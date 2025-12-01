@@ -198,25 +198,6 @@ Returns **[Promise][5]** — resolves when animation ends
 <br>
 <br>
 
-## breath
-
-Creates a breathing animation on the element.
-
-```js
-__.animation.breath(element, options);
-```
-
-#### Parameters
-
-*   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: '2000ms', scale: 1.05 }`)
-
-Returns **[Promise][5]** — resolves when animation ends
-
-**Direction options:** not applicable
-<br>
-<br>
-
 ## expand
 
 Expands the element from a small scale. Shows hidden elements as a result.
@@ -362,25 +343,6 @@ __.animation.jello(element, options);
 
 *   `element` **[Element][1]** 
 *   `options` **[object][3]** (optional, default `{ duration: '600ms' }`)
-
-Returns **[Promise][5]** — resolves when animation ends
-
-**Direction options:** not applicable
-<br>
-<br>
-
-## poke
-
-Creates a poking animation on the element.
-
-```js
-__.animation.poke(element, options);
-```
-
-#### Parameters
-
-*   `element` **[Element][1]** 
-*   `options` **[object][3]** (optional, default `{ duration: '800ms', scale: 1.05 }`)
 
 Returns **[Promise][5]** — resolves when animation ends
 

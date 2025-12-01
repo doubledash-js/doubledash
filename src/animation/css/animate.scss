@@ -3,17 +3,21 @@
 /* Attention  */
 @import 'attention/bounce';
 @import 'attention/flash';
+@import 'attention/headShake';
 @import 'attention/heartBeat';
 @import 'attention/jello';
 @import 'attention/pulse';
 @import 'attention/rubberBand';
-@import 'attention/shake';
+@import 'attention/shakeX';
+@import 'attention/shakeY';
+@import 'attention/spin';
 @import 'attention/swing';
 @import 'attention/tada';
 @import 'attention/wobble';
-@import 'attention/breath';
-@import 'attention/poke';
-@import 'attention/wiggle';
+
+/* Blur */
+@import 'blur/blurIn';
+@import 'blur/blurOut';
 
 /* Bouncing  */
 @import 'bouncing/bounceIn';
@@ -46,6 +50,19 @@
 @import 'fading/fadeOutTopRight';
 @import 'fading/fadeOutBottomRight';
 @import 'fading/fadeOutBottomLeft';
+
+/* Flippers */
+@import 'flippers/flip';
+@import 'flippers/flipInX';
+@import 'flippers/flipInY';
+@import 'flippers/flipOutX';
+@import 'flippers/flipOutY';
+
+/* lightspeed */
+@import 'lightspeed/lightspeedInRight';
+@import 'lightspeed/lightspeedInLeft';
+@import 'lightspeed/lightspeedOutRight';
+@import 'lightspeed/lightspeedOutLeft';
 
 /* Rotating */
 @import 'rotating/rotateIn';
@@ -80,18 +97,5 @@
 @import 'zooming/zoomOutLeft';
 @import 'zooming/zoomOutRight';
 @import 'zooming/zoomOutUp';
-
-/* Scaling */
-@import 'scaling/expand';
-@import 'scaling/grow';
-@import 'scaling/shrink';
-
-/* Morphing */
-@import 'morphing/blur';
-@import 'morphing/reveal';
-
-/* Transforming */
-@import 'transforming/flip';
-@import 'transforming/spin';
 
 

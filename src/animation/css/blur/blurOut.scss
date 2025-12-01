@@ -1,0 +1,15 @@
+.blurOut {
+  animation-name: blur-out;
+  animation-fill-mode: both;
+}
+
+@keyframes blur-out {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}

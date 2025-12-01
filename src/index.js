@@ -1,39 +1,49 @@
 // animate
 export { default as animate } from './animation/animate.js';
+
 export { default as onClick } from './animation/events/onClick.js';
 export { default as onEntrance } from './animation/events/onEntrance.js';
 export { default as onHover } from './animation/events/onHover.js';
 export { default as onLoop } from './animation/events/onLoop.js';
-export { default as blur } from './animation/types/blur.js';
-export { default as bounce } from './animation/types/bounce.js';
-export { default as bounceIn } from './animation/types/bounceIn.js';
-export { default as bounceOut } from './animation/types/bounceOut.js';
-export { default as breath } from './animation/types/breath.js';
-export { default as expand } from './animation/types/expand.js';
-export { default as fadeIn } from './animation/types/fadeIn.js';
-export { default as fadeOut } from './animation/types/fadeOut.js';
-export { default as flash } from './animation/types/flash.js';
-export { default as flip } from './animation/types/flip.js';
-export { default as grow } from './animation/types/grow.js';
-export { default as heartBeat } from './animation/types/heartBeat.js';
-export { default as jello } from './animation/types/jello.js';
-export { default as poke } from './animation/types/poke.js';
-export { default as pulse } from './animation/types/pulse.js';
-export { default as reveal } from './animation/types/reveal.js';
-export { default as rotateIn } from './animation/types/rotateIn.js';
-export { default as rotateOut } from './animation/types/rotateOut.js';
-export { default as rubberBand } from './animation/types/rubberBand.js';
-export { default as shake } from './animation/types/shake.js';
-export { default as shrink } from './animation/types/shrink.js';
-export { default as slideIn } from './animation/types/slideIn.js';
-export { default as slideOut } from './animation/types/slideOut.js';
-export { default as spin } from './animation/types/spin.js';
-export { default as swing } from './animation/types/swing.js';
-export { default as tada } from './animation/types/tada.js';
-export { default as wiggle } from './animation/types/wiggle.js';
-export { default as wobble } from './animation/types/wobble.js';
-export { default as zoomingIn } from './animation/types/zoomingIn.js';
-export { default as zoomingOut } from './animation/types/zoomingOut.js';
+
+export { default as bounce } from './animation/types/attention/bounce';
+export { default as flash } from './animation/types/attention/flash';
+export { default as flip } from './animation/types/attention/flip';
+export { default as headShake } from './animation/types/attention/headShake';
+export { default as heartBeat } from './animation/types/attention/heartBeat';
+export { default as jello } from './animation/types/attention/jello';
+export { default as pulse } from './animation/types/attention/pulse';
+export { default as rubberBand } from './animation/types/attention/rubberBand';
+export { default as shake } from './animation/types/attention/shake';
+export { default as spin } from './animation/types/attention/spin';
+export { default as swing } from './animation/types/attention/swing';
+export { default as tada } from './animation/types/attention/tada';
+export { default as wobble } from './animation/types/attention/wobble';
+
+export { default as blurIn } from './animation/types/blurIn';
+export { default as blurOut } from './animation/types/blurOut';
+
+export { default as bounceIn } from './animation/types/bounceIn';
+export { default as bounceOut } from './animation/types/bounceOut';
+
+export { default as fadeIn } from './animation/types/fadeIn';
+export { default as fadeOut } from './animation/types/fadeOut';
+
+export { default as flipIn } from './animation/types/flipIn';
+export { default as flipOut } from './animation/types/flipOut';
+
+export { default as lightspeedIn } from './animation/types/lightspeedIn';
+export { default as lightspeedOut } from './animation/types/lightspeedOut';
+
+export { default as rotateIn } from './animation/types/rotateIn';
+export { default as rotateOut } from './animation/types/rotateOut';
+
+export { default as slideIn } from './animation/types/slideIn';
+export { default as slideOut } from './animation/types/slideOut';
+
+export { default as zoomingIn } from './animation/types/zoomingIn';
+export { default as zoomingOut } from './animation/types/zoomingOut';
+
 
 //dom
 export { default as after } from './dom/after';

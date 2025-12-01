@@ -1,38 +1,55 @@
 import animate from './animate';
 import onClick from './events/onClick';
-import onEntrance from './events/onEntrance';
+import onEntrance  from './events/onEntrance';
 import onHover from './events/onHover';
 import onLoop from './events/onLoop';
-import blur from './types/blur';
-import bounce from './types/bounce';
-import bounceIn from './types/bounceIn';
-import bounceOut from './types/bounceOut';
-import breath from './types/breath';
-import expand from './types/expand';
-import fadeIn from './types/fadeIn';
-import fadeOut from './types/fadeOut';
-import flash from './types/flash';
-import flip from './types/flip';
-import grow from './types/grow';
-import heartBeat from './types/heartBeat';
-import jello from './types/jello';
-import poke from './types/poke';
-import pulse from './types/pulse';
-import reveal from './types/reveal';
-import rotateIn from './types/rotateIn';
-import rotateOut from './types/rotateOut';
-import rubberBand from './types/rubberBand';
-import shake from './types/shake';
-import shrink from './types/shrink';
-import slideIn from './types/slideIn';
-import slideOut from './types/slideOut';
-import spin from './types/spin';
-import swing from './types/swing';
-import tada from './types/tada';
-import wiggle from './types/wiggle';
-import wobble from './types/wobble';
-import zoomingIn from './types/zoomingIn';
-import zoomingOut from './types/zoomingOut';
+
+/* Attention  */
+import bounce from './types/attention/bounce';
+import flash from './types/attention/flash';
+import flip from './types/attention/flip';
+import headShake from './types/attention/headShake';
+import heartBeat from './types/attention/heartBeat';
+import jello from './types/attention/jello';
+import pulse from './types/attention/pulse';
+import rubberBand from './types/attention/rubberBand';
+import shake from './types/attention/shake';
+import spin from './types/attention/spin';
+import swing from './types/attention/swing';
+import tada from './types/attention/tada';
+import wobble from './types/attention/wobble';
+
+/* Blur */
+import blurIn from './types/blur/blurIn';
+import blurOut from './types/blur/blurOut';
+
+/* Bouncing  */
+import bounceIn from './types/bounce/bounceIn';
+import bounceOut from './types/bounce/bounceOut';
+
+/* Fading  */
+import fadeIn from './types/fade/fadeIn';
+import fadeOut from './types/fade/fadeOut';
+
+/* Flippers */
+import flipIn from './types/flip/flipIn';
+import flipOut from './types/flip/flipOut';
+
+/* Lightspeed */
+import lightspeedIn from './types/lightspeed/lightspeedIn';
+import lightspeedOut from './types/lightspeed/lightspeedOut';
+
+/* Rotating */
+import rotateIn from './types/rotate/rotateIn';
+import rotateOut from './types/rotate/rotateOut';
+
+/* Sliding */
+import slideIn from './types/slide/slideIn';
+import slideOut from './types/slide/slideOut';
+
+/* Zooming */
+import zoomingIn from './types/zooming/zoomingIn';
+import zoomingOut from './types/zooming/zoomingOut';
 
 export default {
     animate,
@@ -40,34 +57,33 @@ export default {
     onEntrance,
     onHover,
     onLoop,
-    blur,
     bounce,
-    bounceIn,
-    bounceOut,
-    breath,
-    expand,
-    fadeIn,
-    fadeOut,
     flash,
     flip,
-    grow,
+    headShake,
     heartBeat,
     jello,
-    poke,
     pulse,
-    reveal,
-    rotateIn,
-    rotateOut,
     rubberBand,
     shake,
-    shrink,
-    slideIn,
-    slideOut,
     spin,
     swing,
     tada,
-    wiggle,
     wobble,
+    blurIn,
+    blurOut,
+    bounceIn,
+    bounceOut,
+    fadeIn,
+    fadeOut,
+    flipIn,
+    flipOut,
+    lightspeedIn,
+    lightspeedOut,
+    rotateIn,
+    rotateOut,
+    slideIn,
+    slideOut,
     zoomingIn,
     zoomingOut
 }

@@ -1,22 +1,27 @@
 
 let animations = {
     show: [
+        'blurIn', 
         'bounceIn', 'bounceInUp', 'bounceInDown', 'bounceInLeft', 'bounceInRight',
         'fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight', 
+        'flipInX', 'flipInY',
+        'lightspeedInRight', 'lightspeedInLeft',
         'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',
         'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight',
         'zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight',
-        'bounce', 'flash', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble',
-        'expand', 'grow', 'shrink', 'blur', 'reveal', 'flip', 'flipX', 'flipY', 'spin', 'breath', 'poke', 'wiggle'
+        'bounce', 'flash', 'flip', 'headShake', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'spin', 'swing', 'tada', 'wobble'
     ],
     hide: [
+        'blurOut', 
         'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight',
         'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight', 
+        'flipOutX', 'flipOutY',
+        'lightspeedOutRight', 'lightspeedOutLeft',
         'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight',
         'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
         'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'
     ],
-    loopable: ['breath', 'poke', 'wiggle', 'bounce', 'flash', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'spin']
+    loopable: ['bounce', 'flash', 'flip', 'headShake', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'spin', 'swing', 'tada', 'wobble']
 };
 
 /**
