@@ -50,6 +50,11 @@
     opacity: 0;
   }
 }
+.flip {
+  backface-visibility: visible;
+  animation-name: flip;
+}
+
 @keyframes flip {
   from {
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
@@ -72,11 +77,6 @@
     animation-timing-function: ease-in;
   }
 }
-.flip {
-  backface-visibility: visible;
-  animation-name: flip;
-}
-
 .headShake {
   animation-name: headShake;
   animation-timing-function: var(--animate-easing, ease-in-out);
@@ -323,7 +323,7 @@
 @keyframes blur-in {
   0% {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(var(--animate-intensity, 10px));
   }
   100% {
     opacity: 1;
@@ -342,7 +342,7 @@
   }
   100% {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(var(--animate-intensity, 10px));
   }
 }
 /* Bouncing  */
@@ -562,6 +562,10 @@
   }
 }
 /* Fading  */
+.fadeIn {
+  animation-name: fadeIn;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -570,10 +574,6 @@
     opacity: 1;
   }
 }
-.fadeIn {
-  animation-name: fadeIn;
-}
-
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -658,6 +658,10 @@
   animation-name: fadeInTopRight;
 }
 
+.fadeInBottomLeft {
+  animation-name: fadeInBottomLeft;
+}
+
 @keyframes fadeInBottomLeft {
   from {
     opacity: 0;
@@ -668,10 +672,6 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.fadeInBottomLeft {
-  animation-name: fadeInBottomLeft;
-}
-
 @keyframes fadeInBottomRight {
   from {
     opacity: 0;
@@ -807,6 +807,11 @@
 }
 
 /* Flippers */
+.flipInX {
+  backface-visibility: visible !important;
+  animation-name: flipInX;
+}
+
 @keyframes flipInX {
   from {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -828,9 +833,9 @@
     transform: perspective(400px);
   }
 }
-.flipInX {
+.flipInY {
   backface-visibility: visible !important;
-  animation-name: flipInX;
+  animation-name: flipInY;
 }
 
 @keyframes flipInY {
@@ -854,9 +859,10 @@
     transform: perspective(400px);
   }
 }
-.flipInY {
+.flipOutX {
+  animation-duration: calc(var(--animate-duration) * 0.75);
+  animation-name: flipOutX;
   backface-visibility: visible !important;
-  animation-name: flipInY;
 }
 
 @keyframes flipOutX {
@@ -872,10 +878,10 @@
     opacity: 0;
   }
 }
-.flipOutX {
+.flipOutY {
   animation-duration: calc(var(--animate-duration) * 0.75);
-  animation-name: flipOutX;
   backface-visibility: visible !important;
+  animation-name: flipOutY;
 }
 
 @keyframes flipOutY {
@@ -891,13 +897,12 @@
     opacity: 0;
   }
 }
-.flipOutY {
-  animation-duration: calc(var(--animate-duration) * 0.75);
-  backface-visibility: visible !important;
-  animation-name: flipOutY;
+/* lightspeed */
+.lightspeedInRight {
+  animation-name: lightspeedInRight;
+  animation-timing-function: var(--animate-easing, ease-out);
 }
 
-/* lightspeed */
 @keyframes lightspeedInRight {
   from {
     transform: translate3d(100%, 0, 0) skewX(-30deg);
@@ -914,8 +919,8 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.lightspeedInRight {
-  animation-name: lightspeedInRight;
+.lightspeedInLeft {
+  animation-name: lightspeedInLeft;
   animation-timing-function: var(--animate-easing, ease-out);
 }
 
@@ -935,9 +940,9 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.lightspeedInLeft {
-  animation-name: lightspeedInLeft;
-  animation-timing-function: var(--animate-easing, ease-out);
+.lightspeedOutRight {
+  animation-name: lightspeedOutRight;
+  animation-timing-function: var(--animate-easing, ease-in);
 }
 
 @keyframes lightspeedOutRight {
@@ -949,8 +954,8 @@
     opacity: 0;
   }
 }
-.lightspeedOutRight {
-  animation-name: lightspeedOutRight;
+.lightspeedOutLeft {
+  animation-name: lightspeedOutLeft;
   animation-timing-function: var(--animate-easing, ease-in);
 }
 
@@ -963,11 +968,6 @@
     opacity: 0;
   }
 }
-.lightspeedOutLeft {
-  animation-name: lightspeedOutLeft;
-  animation-timing-function: var(--animate-easing, ease-in);
-}
-
 /* Rotating */
 @keyframes rotateIn {
   from {
@@ -1223,7 +1223,7 @@
 @keyframes zoomIn {
   from {
     opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(var(--animate-scale, 0.3), var(--animate-scale, 0.3), var(--animate-scale, 0.3));
   }
   50% {
     opacity: 1;
@@ -1303,7 +1303,7 @@
   }
   50% {
     opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(var(--animate-scale, 0.3), var(--animate-scale, 0.3), var(--animate-scale, 0.3));
   }
   to {
     opacity: 0;

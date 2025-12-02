@@ -10,6 +10,6 @@
   }
   100% {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(var(--animate-intensity, 10px));
   }
 }

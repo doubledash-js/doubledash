@@ -1,3 +1,8 @@
+.lightspeedInLeft {
+  animation-name: lightspeedInLeft;
+  animation-timing-function: var(--animate-easing, ease-out);
+}
+
 @keyframes lightspeedInLeft {
   from {
     transform: translate3d(-100%, 0, 0) skewX(30deg);
@@ -18,7 +23,3 @@
   }
 }
 
-.lightspeedInLeft {
-  animation-name: lightspeedInLeft;
-  animation-timing-function: var(--animate-easing, ease-out);
-}

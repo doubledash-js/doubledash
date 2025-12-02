@@ -1,3 +1,8 @@
+.lightspeedOutRight {
+  animation-name: lightspeedOutRight;
+  animation-timing-function: var(--animate-easing, ease-in);
+}
+
 @keyframes lightspeedOutRight {
   from {
     opacity: 1;
@@ -9,7 +14,4 @@
   }
 }
 
-.lightspeedOutRight {
-  animation-name: lightspeedOutRight;
-  animation-timing-function: var(--animate-easing, ease-in);
-}
+

@@ -1,3 +1,8 @@
+.flipInX {
+  backface-visibility: visible !important;
+  animation-name: flipInX;
+}
+
 @keyframes flipInX {
   from {
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -24,7 +29,4 @@
   }
 }
 
-.flipInX {
-  backface-visibility: visible !important;
-  animation-name: flipInX;
-}
+

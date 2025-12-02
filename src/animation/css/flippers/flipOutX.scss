@@ -1,3 +1,9 @@
+.flipOutX {
+  animation-duration: calc(var(--animate-duration) * 0.75);
+  animation-name: flipOutX;
+  backface-visibility: visible !important;
+}
+
 @keyframes flipOutX {
   from {
     transform: perspective(400px);
@@ -14,8 +20,3 @@
   }
 }
 
-.flipOutX {
-  animation-duration: calc(var(--animate-duration) * 0.75);
-  animation-name: flipOutX;
-  backface-visibility: visible !important;
-}
