@@ -260,7 +260,7 @@ This is particularly useful for exposing data from parent contexts to the partia
 
 The partial template:
 ```
-__.template.registry.registerPartial("person", "{{person.name}} is {{person.age}} years old.\n")
+__.template.registry.registerPartial("person", "{{name}} is {{age}} years old.\n")
 ```
 
 The data:
