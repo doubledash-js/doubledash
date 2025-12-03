@@ -229,26 +229,66 @@ Output will be generated as below
 
 
 
-### Sub Templates
+### Parial Templates
 
-Use predefined functions in templates.
-```html
-<p>{{name}} - {{add(3, 4)}}</p>
+Template partials allow for code reuse by creating shared templates. You can register a partial using the `registerPartial` method:
+
+```
+__.template.registry.registerPartial('myPartial', '{{prefix}}');
 ```
 
-Pass the below input object to the template
-```js
+This call will register the myPartial partial. Partials template is passed into the second parameter.
+
+Calling the partial is done through the partial call syntax:
+```
+{{> myPartial }}
+```
+
+Will render the partial named myPartial. When the partial executes, it will be run under the current execution context.
+
+### Partial Parameters
+Custom data can be passed to partials through hash parameters.
+```
+{{> myPartial { parameter: "favoriteNumber" } }}
+```
+
+Will set parameter to value when the partial runs.
+
+This is particularly useful for exposing data from parent contexts to the partial.
+
+### Full Example
+
+The partial template:
+```
+__.template.registry.registerPartial("person", "{{person.name}} is {{person.age}} years old.\n")
+```
+
+The data:
+```
 {
-  name: 'Iggy',
-  add: (a, b) => {
-    return a + b;
-  }
+  persons: [
+    { name: "Jim", age: 40 },
+    { name: "Kat", age: 36 },
+    { name: "Phoenix", age: 9 },
+    { name: "Iggy", age: 3 },
+  ],
 }
 ```
 
-Output will be generated as below
-```html
-<p>Iggy - 7</p>
+The template:
 ```
+{{for (let i = 0; i < persons.length; i++)}}
+  {{> person persons[i] }}.
+{{endfor}}
+```
+
+will then provide the following result:
+```
+Jim is 40 years old.
+Kat is 36 years old.
+Phoenix is 9 years old.
+Iggy is 3 years old.
+```
+
 <br>
 <br>
