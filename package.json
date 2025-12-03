@@ -4,7 +4,6 @@
   "description": "DoubleDash is simple utility library meant to help transition people off of jQuery.",
   "repository": "doubledash-js/doubledash.git",
   "sideEffects": false,
-  "type": "module",
   "main": "src/index.js",
   "directories": {
     "test": "test"
