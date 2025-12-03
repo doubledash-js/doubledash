@@ -202,6 +202,8 @@ will result in:
 
 You can also use `{{break}}` and `{{continue}}` in your for loops.
 
+<br>
+<br>
 
 ## Add functions
 
