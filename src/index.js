@@ -109,6 +109,7 @@ export { default as width } from './size/width';
 // template
 export { default as compile } from './template/compile';
 export { default as supplant } from './template/supplant';
+export { default as registry } from './template/registry';
 
 // category
 export { default as animation } from './animation/index.js';

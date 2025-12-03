@@ -59,7 +59,7 @@ class Registry {
      * Register a custom token
      * 
      * ```js
-     * Template.registerToken('myToken', (line, token, statement) => {
+     * __.template.registry.registerToken('myToken', (line, token, statement) => {
      *      return 'myCode;' + '\n';
      * });
      * ```
@@ -84,7 +84,7 @@ class Registry {
      * Unregister a token
      * 
      * ```js
-     * Template.unregisterToken('myToken');
+     * __.template.registry.unregisterToken('myToken');
      * ```
      * 
      * @param {string} name - Token name
@@ -101,7 +101,7 @@ class Registry {
      * Register a partial template
      * 
      * ```js
-     * Template.registerPartial('header', '<h1>{{title}}</h1>');
+     * __.template.registry.registerPartial('header', '<h1>{{title}}</h1>');
      * ```
      * 
      * @param {string} name - Partial name
@@ -119,7 +119,7 @@ class Registry {
      * Unregister a partial
      * 
      * ```js
-     * Template.unregisterPartial('header');
+     * __.template.registry.unregisterPartial('header');
      * ```
      * 
      * @param {string} name - Partial name
@@ -136,7 +136,7 @@ class Registry {
      * Register a helper function available in templates
      * 
      * ```js
-     * Template.registerFunction('uppercase', (str) => str.toUpperCase());
+     * __.template.registry.registerFunction('uppercase', (str) => str.toUpperCase());
      * ```
      * 
      * @param {string} name - Function name
@@ -157,7 +157,7 @@ class Registry {
      * Unregister a helper function
      * 
      * ```js
-     * Template.unregisterFunction('uppercase');
+     * __.template.registry.unregisterFunction('uppercase');
      * ```
      * 
      * @param {string} name - Function name

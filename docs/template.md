@@ -229,7 +229,7 @@ Output will be generated as below
 
 
 
-### Parial Templates
+### partial Templates
 
 Template partials allow for code reuse by creating shared templates. You can register a partial using the `registerPartial` method:
 
