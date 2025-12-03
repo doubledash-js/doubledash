@@ -119,14 +119,14 @@ CSS variable names used by the library (preferred convention):
 
 # Animation Types
 
-The animation system provides a wide range of animation options. Each row lists the animation name, the primary action (showing/hiding/attention/loop), a short description, and typical option defaults.
+The animation system provides a wide range of animation options. Each row lists the animation name, the primary action (showing/hiding/attention), a short description, and typical option defaults.
 
 | Name | Action | Description | Typical options |
 | ---- | ------ | ----------- | --------------- |
 | bounce | Attention | Repeating bounce (use onLoop for continuous). | { duration: '1s', delay: '0s', repeat: 1 } |
 | flash | Attention | Quick flash in/out. | { duration: '1s', delay: '0s', repeat: 1 } |
 | flip | Attention | Quick flip effect. | { duration: '1s', delay: '0s', repeat: 1 } |
-| headShake | Attention | Quick head-shake wobble. | { duration: '1s', delay: '0s', repeat: 1 } |
+| headShake | Attention | Quick head-shake wobble. | { duration: '1s', delay: '0s', repeat: 1, easing: 'ease-in-out' } |
 | heartBeat | Attention | Pulsing beat. | { duration: '1s', delay: '0s', repeat: 1, easing: 'ease-in-out' } |
 | jello | Attention | Elastic wobble effect. | { duration: '1s', delay: '0s', repeat: 1 } |
 | pulse | Attention | Gentle pulse. | { duration: '1s', delay: '0s', repeat: 1, easing: 'ease-in-out' } |

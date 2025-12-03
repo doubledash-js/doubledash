@@ -4,12 +4,13 @@
   "description": "DoubleDash is simple utility library meant to help transition people off of jQuery.",
   "repository": "doubledash-js/doubledash.git",
   "sideEffects": false,
+  "type": "module",
   "main": "src/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --silent=false",
     "css": "npm-run-all css-compile css-compress",
     "css-compile": "sass src/animation/css/animate.scss dist/doubledash-animate.css",
     "css-compress": "sass dist/doubledash-animate.css dist/doubledash-animate.min.css --style compressed",
@@ -17,6 +18,7 @@
   },
   "jest": {
     "verbose": true,
+    "silent": false,
     "testEnvironment": "jest-environment-node",
     "transform": {},
     "setupFiles": [

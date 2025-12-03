@@ -1,52 +1,50 @@
 
-
 let settings = {
     tokens: {
-        '&': {
-            process: (line, token, statement) => {
-                return 'r.push(' + statement + ');' + '\n';
-            }
+        '&': (line, token, statement) => {
+            return 'r.push(' + statement + ');' + '\n';
         },
-        'if': {
-            process: (line, token, statement) => {
-                return 'if ' + statement + '{' + '\n';
-            }
+        'if': (line, token, statement) => {
+            return 'if ' + statement + '{' + '\n';
         },
-        'elseif': {
-            process: (line, token, statement) => {
-                return '} else if' + statement + '{' + '\n';
-            }
+        'elseif': (line, token, statement) => {
+            return '} else if' + statement + '{' + '\n';
         },
-        'else': {
-            process: (line, token, statement) => {
-                return '} else {' + '\n';
-            }
+        'else': (line, token, statement) => {
+            return '} else {' + '\n';
         },
-        'endif': {
-            process: (line, token, statement) => {
-                return '}' + '\n';
-            }
+        'endif': (line, token, statement) => {
+            return '}' + '\n';
         },
-        'for': {
-            process: (line, token, statement) => {
-                return 'for ' + statement + '{' + '\n';
-            }
+        'for': (line, token, statement) => {
+            return 'for ' + statement + '{' + '\n';
         },
-        'endfor': {
-            process: (line, token, statement) => {
-                return '}' + '\n';
-            }
+        'endfor': (line, token, statement) => {
+            return '}' + '\n';
         },
-        'break': {
-            process: (line, token, statement) => {
-                return 'break;' + '\n';
-            }
+        'break': (line, token, statement) => {
+            return 'break;' + '\n';
         },
-        'continue': {
-            process: (line, token, statement) => {
-                return 'continue;' + '\n';
-            }
+        'continue': (line, token, statement) => {
+            return 'continue;' + '\n';
         },
+        '>': (line, token, statement) => {
+            console.log(line);
+            console.log(token);
+            console.log(statement);
+            const parts = statement.trim().split(" ", 2)
+
+            const name = parts[0];
+            const params = parts[1];
+            console.log(this);
+            const tpl = "";//Template.getPartials()[name]
+
+            return 'r.push(_supplant(`' + tpl + '`, ' + params + ');'+ '\n';
+        },
+        'log': (line, token, statement) => {
+            console.log(statement);
+            return '';
+        }
     }
     
 }

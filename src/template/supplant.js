@@ -1,63 +1,82 @@
-import settings from './settings';
+import registry from './registry';
 import escapeHtml from '../lang/escapeHtml';
 
 /**
  * Populates a template with a object
  * 
  * ```js
- * __.template.supplant(template, json);
+ * __.template.supplant(template, params);
  * ```
  * 
  * @param {string|Element} template 
- * @param {Object} json 
+ * @param {Object} params 
  * @returns 
  */
-function supplant(template, json) {
+function supplant(template, params) {
     template = (template && template.nodeType === Node.ELEMENT_NODE) ? template.innerHTML : template;
-    json = json ? json : {};
+    params = params ? params : {};
 
-    let re = /{{([^{{}}]*)}}/g,
-        reExp = new RegExp('(^( )?(' + Object.keys(settings.tokens).join('|') + '))(.*)?', 'g'),
-        code = 'var r=[];\n',
+    const re = /{{([\s\S]*?)}}/g;
+
+    const tokenNames = Object.keys(registry.getTokens())
+        .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) // escape for RegExp
+        .join('|');
+
+    const tokenStartRe = new RegExp('^\\s*(' + tokenNames + ')(?=\\s|$)');
+
+    let code = 'var r=[];\n',
         cursor = 0,
         match;
 
-    let add = (line, js) => {
-        if (js) {
-            
-            if (line.match(reExp)) {
-
-                let [token, statement] = match[1].split(/ (.+)/);
-
-                if (settings.tokens.hasOwnProperty(token)) {
-                    let tokenDef = settings.tokens[token];
-                    code += tokenDef.process(line, token, statement);
-                } else {
-                    throw new SyntaxError(`Token not found '${token}'`);
-                }
-                
-            } else {
-                code += 'r.push(_escape(' + line + '));\n';
-            }
-        } else {
-            code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '';
-        }
-
-        return add;
+    function addText(text) {
+        if (!text) return;
+        code += 'r.push("' + text.replace(/"/g, '\\"') + '");\n';
     }
 
-    while (match = re.exec(template)) {
-        add(template.slice(cursor, match.index))(match[1], true);
+    function addToken(raw) {
+        const line = raw.trim();
+
+        // Check if the token body starts with one of our control tokens
+        const m = tokenStartRe.exec(line);
+
+        if (m) {
+            const token = m[1];                        // e.g. "part"
+            const statement = line.slice(m[0].length)  // everything after the token
+                                 .trim();              // e.g. "(cardTemplate, { partarg1: arg1, ... })"
+
+            const tokenDef = registry.getTokens()[token];
+            if (!tokenDef) {
+                throw new SyntaxError(`Token not found '${token}'`);
+            }
+
+            code += tokenDef(line, token, statement);
+        } else {
+            // Not a control token -> plain expression: {{ someJsExpression }}
+            code += 'r.push(_escape(' + line + '));\n';
+        }
+    }
+
+    while ((match = re.exec(template))) {
+        addText(template.slice(cursor, match.index)); // literal text
+        addToken(match[1]);                           // token body
         cursor = match.index + match[0].length;
     }
 
-    add(template.substr(cursor, template.length - cursor));
+    addText(template.slice(cursor));
 
-    // Attach exscape function to json
-    json._escape = escapeHtml;
+    // Attach helpers function to params
+    params._escape   = escapeHtml;
+    params._supplant = supplant;
+    
+    // Attach registered functions to params
+    const registeredFunctions = registry.getFunctions();
+    Object.keys(registeredFunctions).forEach(name => {
+        params[name] = registeredFunctions[name];
+    });
 
     code += 'return r.join("");';
-    return new Function(' with (this) { ' + code.replace(/[\r\t\n]/g, '') + '}').apply(json);
+
+    return new Function('with (this) { ' + code.replace(/[\r\t\n]/g, '') + '}').apply(params);
 }
 
 export default supplant;

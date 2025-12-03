@@ -3,13 +3,13 @@
 DoubleDash template is a simple templating language.
 
 ```js
-__.template.compile(template, json);
+__.template.compile(template, params);
 ```
 
 #### Parameters
 
 *   `template` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-*   `json` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `params` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  
 <br>
@@ -204,6 +204,32 @@ You can also use `{{break}}` and `{{continue}}` in your for loops.
 
 
 ### Add functions
+
+Use predefined functions in templates.
+```html
+<p>{{name}} - {{add(3, 4)}}</p>
+```
+
+Pass the below input object to the template
+```js
+{
+  name: 'Iggy',
+  add: (a, b) => {
+    return a + b;
+  }
+}
+```
+
+Output will be generated as below
+```html
+<p>Iggy - 7</p>
+```
+<br>
+<br>
+
+
+
+### Sub Templates
 
 Use predefined functions in templates.
 ```html

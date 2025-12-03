@@ -1,4 +1,5 @@
 import compile from '../../src/template/compile';
+import registry from '../../src/template/registry';
 
 test('template variable test', () => {
 
@@ -44,5 +45,24 @@ test('template loop test', function() {
     var json = { message: ['one', 'two', 'three'] };
     
     expect( (compile(template, json)).trim() ).toBe(`onetwothree`);
+
+});
+
+test('template partial test', function() {
+
+    registry.registerPartial('printName', `{{first}} {{last}}`)
+
+    var template = `{{arg1}} {{> printName { first: arg2, last: arg3 } }}`;
+
+    var json = { arg1: 'one', arg2: 'two', arg3: 'three' };
+    expect( (compile(template, json)).trim() ).toBe(`one two three`);
+
+});
+
+test('template escape test', function() {
+    var template = `{{specialChars}} {{& specialChars}}`;
+
+    var json = { specialChars: "& < > \" ' / ` =" };
+    expect( (compile(template, json)).trim() ).toBe("&amp; &lt; &gt; &quot; &#39; &#x2F; &#x60; &#x3D; & < > \" ' / ` =");
 
 });

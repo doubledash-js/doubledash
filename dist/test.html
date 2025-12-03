@@ -111,6 +111,23 @@
         wrapper.appendChild(btn);
         container.appendChild(wrapper);
       });
+
+
+      const result1 = __.template.supplant(
+        `{{hi}}`,
+        { hi: 'Hello' }
+      )
+ console.log(result1);
+       __.template.registerToken('shout', function(text) {
+        return text.toUpperCase() + '!!!';
+       });
+
+        const result2 = __.template.supplant(
+        `{{hi}}`,
+        { hi: 'bye' }
+      )
+
+      console.log(result2);
     });
   </script>
 </body>
