@@ -203,44 +203,48 @@ will result in:
 You can also use `{{break}}` and `{{continue}}` in your for loops.
 
 
-### Add functions
+## Add functions
 
-Use predefined functions in templates.
-```html
-<p>{{name}} - {{add(3, 4)}}</p>
+Template partials allow for code reuse by creating shared templates. You can register a partial using the `registerPartial` method:
+
+
+
+Register predefined functions to be used in templates.
+
+```js
+__.template.registry.registerPartial('add', (a, b) => {
+      return a + b;
+  });
 ```
 
-Pass the below input object to the template
-```js
-{
-  name: 'Iggy',
-  add: (a, b) => {
-    return a + b;
-  }
-}
+Then you can use these functions in your templates.
+
+```html
+<p>{{name}} - {{add(3, 4)}}</p>
 ```
 
 Output will be generated as below
 ```html
 <p>Iggy - 7</p>
 ```
+
 <br>
 <br>
 
 
 
-### partial Templates
+## Partial Templates
 
 Template partials allow for code reuse by creating shared templates. You can register a partial using the `registerPartial` method:
 
-```
+```js
 __.template.registry.registerPartial('myPartial', '{{prefix}}');
 ```
 
 This call will register the myPartial partial. Partials template is passed into the second parameter.
 
 Calling the partial is done through the partial call syntax:
-```
+```js
 {{> myPartial }}
 ```
 
@@ -248,7 +252,7 @@ Will render the partial named myPartial. When the partial executes, it will be r
 
 ### Partial Parameters
 Custom data can be passed to partials through hash parameters.
-```
+```js
 {{> myPartial { parameter: "favoriteNumber" } }}
 ```
 
@@ -259,12 +263,12 @@ This is particularly useful for exposing data from parent contexts to the partia
 ### Full Example
 
 The partial template:
-```
+```js
 __.template.registry.registerPartial("person", "{{name}} is {{age}} years old.\n")
 ```
 
 The data:
-```
+```js
 {
   persons: [
     { name: "Jim", age: 40 },
@@ -276,14 +280,14 @@ The data:
 ```
 
 The template:
-```
+```js
 {{for (let i = 0; i < persons.length; i++)}}
   {{> person persons[i] }}.
 {{endfor}}
 ```
 
 will then provide the following result:
-```
+```html
 Jim is 40 years old.
 Kat is 36 years old.
 Phoenix is 9 years old.
