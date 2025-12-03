@@ -205,14 +205,10 @@ You can also use `{{break}}` and `{{continue}}` in your for loops.
 
 ## Add functions
 
-Template partials allow for code reuse by creating shared templates. You can register a partial using the `registerPartial` method:
-
-
-
 Register predefined functions to be used in templates.
 
 ```js
-__.template.registry.registerPartial('add', (a, b) => {
+__.template.registry.registerFunction('add', (a, b) => {
       return a + b;
   });
 ```
