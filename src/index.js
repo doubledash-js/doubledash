@@ -20,29 +20,29 @@ export { default as swing } from './animation/types/attention/swing';
 export { default as tada } from './animation/types/attention/tada';
 export { default as wobble } from './animation/types/attention/wobble';
 
-export { default as blurIn } from './animation/types/blurIn';
-export { default as blurOut } from './animation/types/blurOut';
+export { default as blurIn } from './animation/types/blur/blurIn';
+export { default as blurOut } from './animation/types/blur/blurOut';
 
-export { default as bounceIn } from './animation/types/bounceIn';
-export { default as bounceOut } from './animation/types/bounceOut';
+export { default as bounceIn } from './animation/types/bounce/bounceIn';
+export { default as bounceOut } from './animation/types/bounce/bounceOut';
 
-export { default as fadeIn } from './animation/types/fadeIn';
-export { default as fadeOut } from './animation/types/fadeOut';
+export { default as fadeIn } from './animation/types/fade/fadeIn';
+export { default as fadeOut } from './animation/types/fade/fadeOut';
 
-export { default as flipIn } from './animation/types/flipIn';
-export { default as flipOut } from './animation/types/flipOut';
+export { default as flipIn } from './animation/types/flip/flipIn';
+export { default as flipOut } from './animation/types/flip/flipOut';
 
-export { default as lightspeedIn } from './animation/types/lightspeedIn';
-export { default as lightspeedOut } from './animation/types/lightspeedOut';
+export { default as lightspeedIn } from './animation/types/lightspeed/lightspeedIn';
+export { default as lightspeedOut } from './animation/types/lightspeed/lightspeedOut';
 
-export { default as rotateIn } from './animation/types/rotateIn';
-export { default as rotateOut } from './animation/types/rotateOut';
+export { default as rotateIn } from './animation/types/rotate/rotateIn';
+export { default as rotateOut } from './animation/types/rotate/rotateOut';
 
-export { default as slideIn } from './animation/types/slideIn';
-export { default as slideOut } from './animation/types/slideOut';
+export { default as slideIn } from './animation/types/slide/slideIn';
+export { default as slideOut } from './animation/types/slide/slideOut';
 
-export { default as zoomingIn } from './animation/types/zoomingIn';
-export { default as zoomingOut } from './animation/types/zoomingOut';
+export { default as zoomingIn } from './animation/types/zooming/zoomingIn';
+export { default as zoomingOut } from './animation/types/zooming/zoomingOut';
 
 
 //dom
