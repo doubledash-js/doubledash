@@ -8,6 +8,22 @@ Double Dash is simple utility library meant to help transition people off of jQu
 
 ## Usage
 
+### Browser (script tag)
+
+Using a CDN:
+
+```html
+<script src="https://unpkg.com/@foragefox/doubledash"></script>
+```
+
+This exposes a global `__` object:
+
+```js
+__.dom.find('[data-logic]')
+```
+
+### Bundlers (import)
+
 `import __ from '@foragefox/doubledash';`
 
 #### import individual categories

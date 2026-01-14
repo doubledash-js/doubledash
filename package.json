@@ -8,6 +8,24 @@
   },
   "sideEffects": false,
   "main": "src/index.js",
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./browser": "./dist/doubledash.js",
+    "./animate.css": "./dist/doubledash-animate.css",
+    "./animate.min.css": "./dist/doubledash-animate.min.css"
+  },
+  "unpkg": "dist/doubledash.js",
+  "jsdelivr": "dist/doubledash.js",
+  "files": [
+    "dist",
+    "src",
+    "docs",
+    "README.md"
+  ],
   "directories": {
     "test": "test"
   },
