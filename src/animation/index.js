@@ -39,6 +39,10 @@ import flipOut from './types/flip/flipOut';
 import lightspeedIn from './types/lightspeed/lightspeedIn';
 import lightspeedOut from './types/lightspeed/lightspeedOut';
 
+/* Revealing */
+import revealIn from './types/reveal/revealIn';
+import revealOut from './types/reveal/revealOut';
+
 /* Rotating */
 import rotateIn from './types/rotate/rotateIn';
 import rotateOut from './types/rotate/rotateOut';
@@ -80,6 +84,8 @@ export default {
     flipOut,
     lightspeedIn,
     lightspeedOut,
+    revealIn,
+    revealOut,
     rotateIn,
     rotateOut,
     slideIn,

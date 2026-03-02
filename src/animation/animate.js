@@ -6,10 +6,10 @@ let animations = {
         'fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight', 
         'flipInX', 'flipInY',
         'lightspeedInRight', 'lightspeedInLeft',
+        'revealIn',
         'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight',
         'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight',
-        'zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight',
-        'bounce', 'flash', 'flip', 'headShake', 'heartBeat', 'jello', 'pulse', 'rubberBand', 'shakeX', 'shakeY', 'spin', 'swing', 'tada', 'wobble'
+        'zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight'
     ],
     hide: [
         'blurOut', 
@@ -17,6 +17,7 @@ let animations = {
         'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomLeft', 'fadeOutBottomRight', 
         'flipOutX', 'flipOutY',
         'lightspeedOutRight', 'lightspeedOutLeft',
+        'revealOut',
         'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight',
         'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
         'zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight'

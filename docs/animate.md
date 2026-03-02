@@ -146,6 +146,8 @@ The animation system provides a wide range of animation options. Each row lists 
 | flipOut | Hiding | 3D flip out on the direction. | { duration: '1s', delay: '0s', repeat: 1, direction: 'x' \| 'y' } |
 | lightspeedIn | Showing | Fast horizontal entrance with skew to the direction. | { duration: '1s', delay: '0s', repeat: 1, easing: 'ease-out', direction: 'right' \| 'left' } |
 | lightspeedOut | Hiding | Fast horizontal exit to the direction. | { duration: '1s', delay: '0s', repeat: 1, easing: 'ease-in', direction: 'right' \| 'left'  } |
+| revealIn | Showing | Accordion-style reveal (expands height while fading in). | { duration: '1s', delay: '0s', repeat: 1, distance: '1000px' } |
+| revealOut | Hiding | Accordion-style hide (collapses height while fading out). | { duration: '1s', delay: '0s', repeat: 1, distance: '1000px' } |
 | rotateIn | Showing | Rotates in with pivot and to the direction. | { duration: '1s', delay: '0s', repeat: 1, direction: '' \| 'downLeft' \| 'downRight' \| 'upLeft' \| 'upRight } |
 | rotateOut | Hiding | Rotates out with pivot and to the direction. | { duration: '1s', delay: '0s', repeat: 1, direction: '' \| 'downLeft' \| 'downRight' \| 'upLeft' \| 'upRight } |
 | slideIn | Showing | Slide in towards the direction. | { duration: '1s', delay: '0s', repeat: 1, distance: '100%' \| '-100%', direction: 'up' \| 'down' \| 'left' \| 'right' } |

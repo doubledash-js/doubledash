@@ -35,6 +35,9 @@ export { default as flipOut } from './animation/types/flip/flipOut';
 export { default as lightspeedIn } from './animation/types/lightspeed/lightspeedIn';
 export { default as lightspeedOut } from './animation/types/lightspeed/lightspeedOut';
 
+export { default as revealIn } from './animation/types/reveal/revealIn';
+export { default as revealOut } from './animation/types/reveal/revealOut';
+
 export { default as rotateIn } from './animation/types/rotate/rotateIn';
 export { default as rotateOut } from './animation/types/rotate/rotateOut';
 

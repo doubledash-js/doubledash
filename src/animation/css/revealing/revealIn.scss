@@ -1,0 +1,17 @@
+@keyframes revealIn {
+    from {
+        max-height: 0;
+        opacity: 0;
+        visibility: visible;
+    }
+
+    to {
+        max-height: var(--animate-distance, 1000px);
+        opacity: 1;
+    }
+}
+
+.revealIn {
+    overflow: hidden;
+    animation-name: revealIn;
+}
