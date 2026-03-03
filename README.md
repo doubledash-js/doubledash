@@ -37,7 +37,7 @@ __.dom.find('[data-logic]')
 
 We orginiaze our functions into categories:
 
-*   animate
+*   animation
 *   dom
 *   event
 *   form
@@ -69,13 +69,13 @@ function = parents
 Find our docs [here](docs/)
 
 
-| [Animate](docs/animate.md)                            | [Dom](docs/dom.md)                 | [Event](docs/event.md)             | [Lang](docs/lang.md)                      | [Location](docs/location.md)            | [Size](docs/size.md)                      | [Template](docs/template.md)            |
+| [Animation](docs/animation.md)                            | [Dom](docs/dom.md)                 | [Event](docs/event.md)             | [Lang](docs/lang.md)                      | [Location](docs/location.md)            | [Size](docs/size.md)                      | [Template](docs/template.md)            |
 | ----------------------------------------------------- | ---------------------------------- | ---------------------------------- | ----------------------------------------- | --------------------------------------- | ----------------------------------------- | --------------------------------------- |
-| [animate()](docs/animate.md#core-animation-function)  | [after()](docs/dom.md#after)       | [off()](docs/event.md#off)         | [escapeHtml()](docs/lang.md#escapeHtml)   | [offset()](docs/location.md#offset)     | [width()](docs/size.md#width)             | [supplant()](docs/template.md#supplant) |
-| [onClick()](docs/animate.md#onclick)                  | [append()](docs/dom.md#append)     | [on()](docs/event.md#on)           | [extend()](docs/lang.md#extend)           | [position()](docs/location.md#position) | [outerWidth()](docs/size.md#outerWidth)   |                                         |
-| [onHover()](docs/animate.md#onhover)                  | [before()](docs/dom.md#before)     | [once()](docs/event.md#once)       | [isArray()](docs/lang.md#isArray)         |                                         | [setWidth()](docs/size.md#setWidth)       |                                         |
-| [onEntrance()](docs/animate.md#onentrance)            | [children()](docs/dom.md#children) | [trigger()](docs/event.md#trigger) | [isBoolean()](docs/lang.md#isBoolean)     |                                         | [height()](docs/size.md#height)           |                                         |
-| [onLoop()](docs/animate.md#onloop)                    | [clone()](docs/dom.md#clone)       |                                    | [isEmpty()](docs/lang.md#isEmpty)         |                                         | [outerHeight()](docs/size.md#outerHeight) |                                         |
+| [animate()](docs/animation.md#core-animation-function)  | [after()](docs/dom.md#after)       | [off()](docs/event.md#off)         | [escapeHtml()](docs/lang.md#escapeHtml)   | [offset()](docs/location.md#offset)     | [width()](docs/size.md#width)             | [supplant()](docs/template.md#supplant) |
+| [onClick()](docs/animation.md#onclick)                  | [append()](docs/dom.md#append)     | [on()](docs/event.md#on)           | [extend()](docs/lang.md#extend)           | [position()](docs/location.md#position) | [outerWidth()](docs/size.md#outerWidth)   |                                         |
+| [onHover()](docs/animation.md#onhover)                  | [before()](docs/dom.md#before)     | [once()](docs/event.md#once)       | [isArray()](docs/lang.md#isArray)         |                                         | [setWidth()](docs/size.md#setWidth)       |                                         |
+| [onEntrance()](docs/animation.md#onentrance)            | [children()](docs/dom.md#children) | [trigger()](docs/event.md#trigger) | [isBoolean()](docs/lang.md#isBoolean)     |                                         | [height()](docs/size.md#height)           |                                         |
+| [onLoop()](docs/animation.md#onloop)                    | [clone()](docs/dom.md#clone)       |                                    | [isEmpty()](docs/lang.md#isEmpty)         |                                         | [outerHeight()](docs/size.md#outerHeight) |                                         |
 |                                                       | [closest()](docs/dom.md#closest)   |                                    | [isFunction()](docs/lang.md#isFunction)   |                                         | [setHeight()](docs/size.md#setHeight)     |                                         |
 |                                                       | [contains()](docs/dom.md#contains) |                                    | [isJson()](docs/lang.md#isJson)           |                                         | 
 |                                                       | [create()](docs/dom.md#create)     |                                    | [isNull()](docs/lang.md#isNull)           |                                         |

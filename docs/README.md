@@ -1,7 +1,7 @@
 # Documentation
 
 Select a category:
-*  [Animate](animate.md)
+*  [Animation](animation.md)
 *  [Dom](dom.md)
 *  [Event](event.md)
 *  [Form](form.md)
