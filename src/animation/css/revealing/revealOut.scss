@@ -1,17 +1,16 @@
 @keyframes revealOut {
     from {
         max-height: var(--animate-distance, 1000px);
-        opacity: 1;
     }
 
     to {
         max-height: 0;
-        opacity: 0;
-        visibility: hidden;
     }
 }
 
 .revealOut {
     overflow: hidden;
     animation-name: revealOut;
+    animation-timing-function: var(--animate-easing, ease-in);
+    animation-duration: calc(var(--animate-duration) * 0.25);
 }

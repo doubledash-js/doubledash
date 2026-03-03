@@ -1,4 +1,4 @@
-export { default as animation } from './animation';
+export { default as animate } from './animation';
 export { default as dom } from './dom';
 export { default as event } from './event';
 export { default as form } from './form';

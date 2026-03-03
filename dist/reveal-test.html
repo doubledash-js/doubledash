@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DoubleDash Reveal Test</title>
+  <link rel="stylesheet" href="./doubledash-animate.css">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 24px;
+      line-height: 1.4;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .panel-wrap {
+      width: 360px;
+      max-width: 100%;
+      border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      background: #f5f7fb;
+      border-bottom: 1px solid #e4e8ef;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      padding: 12px;
+      background: #fff;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .help {
+      margin-top: 8px;
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reveal Animation Test</h1>
+  <p>Use these buttons to test <code>revealIn</code> and <code>revealOut</code>.</p>
+
+  <div class="controls">
+    <button id="btnIn">Reveal In</button>
+    <button id="btnOut">Reveal Out</button>
+    <button id="btnToggle">Toggle</button>
+  </div>
+
+  <div id="panel" class="panel-wrap">
+    <div class="panel-header">Accordion Panel</div>
+    <div class="panel-content">
+      <p>This content should collapse with <strong>revealOut</strong> and expand with <strong>revealIn</strong>.</p>
+      <p>Try clicking quickly to see if transitions queue correctly.</p>
+    </div>
+  </div>
+
+  <div id="status" class="status">Status: visible</div>
+  <div class="help">Tip: if nothing animates, make sure <code>doubledash.js</code> and <code>doubledash-animate.css</code> are available in this folder.</div>
+
+  <script src="./doubledash.js"></script>
+  <script>
+    const panel = document.getElementById('panel');
+    const status = document.getElementById('status');
+
+    function animationApi() {
+      if (!window.__) return null;
+      return __.animate || null;
+    }
+
+    function hasAnimateLib() {
+      const api = animationApi();
+      return !!(api && api.revealIn && api.revealOut);
+    }
+
+    function isHidden() {
+      return window.getComputedStyle(panel).display === 'none';
+    }
+
+    function setStatus(text) {
+      status.textContent = 'Status: ' + text;
+    }
+
+    async function revealIn() {
+      setStatus('revealing in...');
+
+      if (!hasAnimateLib()) {
+        setStatus('animation library not available');
+        return;
+      }
+
+      await animationApi().revealIn(panel);
+    
+      setStatus('visible');
+    }
+
+    async function revealOut() {
+      setStatus('revealing out...');
+      if (!hasAnimateLib()) {
+        setStatus('animation library not available');
+        return;
+      }
+
+      await animationApi().revealOut(panel);
+      setStatus('hidden');
+    }
+
+    document.getElementById('btnIn').addEventListener('click', revealIn);
+    document.getElementById('btnOut').addEventListener('click', revealOut);
+    document.getElementById('btnToggle').addEventListener('click', () => {
+      if (isHidden()) {
+        revealIn();
+      } else {
+        revealOut();
+      }
+    });
+   
+  </script>
+</body>
+</html>

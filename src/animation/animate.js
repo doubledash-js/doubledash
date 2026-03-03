@@ -87,15 +87,20 @@ function animate(element, animation, options = {}) {
         }
 
         element.classList.remove(...classes);
-        element.removeEventListener('animationend', handleAnimationEnd);
+        element.removeEventListener('animationend', handleAnimationDone);
+        element.removeEventListener('animationcancel', handleAnimationDone);
 
         resolvePromise(resolveValue);
     }
 
     // event handler (not registered with {once:true} so we can remove when stopping)
-    function handleAnimationEnd(event) {
+    function handleAnimationDone(event) {
+        if (event && event.target !== element) {
+            return;
+        }
+
         event && event.stopPropagation();
-        cleanup(isHide, 'Animation ended');
+        cleanup(isHide, event && event.type === 'animationcancel' ? 'Animation canceled' : 'Animation ended');
     }
 
     const promise = new Promise((resolve) => {
@@ -112,15 +117,15 @@ function animate(element, animation, options = {}) {
         if (options.easing)    element.style.setProperty('--animate-easing', options.easing);
 
         // wire up listener and play
-        element.addEventListener('animationend', handleAnimationEnd);
+        element.addEventListener('animationend', handleAnimationDone);
+        element.addEventListener('animationcancel', handleAnimationDone);
+
+        if (window.getComputedStyle(element).display === 'none' || isShow)
+            element.style.display = '';
+
+        void element.offsetWidth;
 
         element.classList.add(...classes);
-
-        if (window.getComputedStyle(element).display === 'none')
-            element.style.display = '';
-
-        if (isShow)
-            element.style.display = '';
     });
 
     // control methods
